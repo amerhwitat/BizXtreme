@@ -1,0 +1,1 @@
+{"schema":"chimera-aurora-integration/v2","parent":"amerhwitat/ChimeraIIOS","desktop":"Aurora Wayland Glass","surface":"embedded-application","theme_contract":"web/aurora_glass_desktop.json","terminal_contract":"web/aurora_terminal_profile.json","man_database":"web/man_pages.json","command_catalog":"web/command_catalog.json","native_backend":"capability-gated"}
