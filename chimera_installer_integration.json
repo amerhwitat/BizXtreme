@@ -1,0 +1,1 @@
+{"schema":"chimera-installer-integration/v1","canonical_repo":"amerhwitat/ChimeraIIOS","catalog":"web/installer_catalog.json","ui":"web/installer_manager.html","mode":"catalog-adapter","native_backend":false}
