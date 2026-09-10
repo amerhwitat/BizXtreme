@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bizxtreme"
+version = "1.0.0"
+description = "Python implementation of BizXtreme integration services"
+requires-python = ">=3.10"
+
+[project.scripts]
+bizxtreme = "bizxtreme.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bizxtreme*"]
