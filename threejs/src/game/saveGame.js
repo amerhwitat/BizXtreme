@@ -6,8 +6,10 @@ function openDb(){return new Promise((resolve,reject)=>{const r=indexedDB.open(D
 
 export async function saveGame(snapshot){
   const value={...snapshot,savedAt:new Date().toISOString(),schema:1};
+  // Immediate localStorage mirror makes the save resilient during page shutdown.
+  localStorage.setItem('bizxtreme.save',JSON.stringify(value));
   try{const db=await openDb();await new Promise((resolve,reject)=>{const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(value,KEY);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)});db.close();}
-  catch{localStorage.setItem('bizxtreme.save',JSON.stringify(value));}
+  catch{}
   return value;
 }
 
