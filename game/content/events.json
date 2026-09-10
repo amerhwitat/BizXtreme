@@ -1,0 +1,11 @@
+{
+  "schema":"bizx.game.events.v1",
+  "events":[
+    {"id":"weekly_frontier","name":"Frontier Weekend","cadence":"weekly","description":"Rotating missions with bonus progression and free daily claims."},
+    {"id":"aurora_night","name":"Aurora Night","cadence":"seasonal","description":"Limited-time world event with rare exploration rewards and cosmetics."},
+    {"id":"faction_wars","name":"Faction Wars","cadence":"monthly","description":"Optional faction objectives that alter cosmetic rewards and map control."},
+    {"id":"treasure_hunt","name":"Lost Signal Hunt","cadence":"rotating","description":"Follow clues across the game world to discover caches and lore fragments."},
+    {"id":"community_expedition","name":"Great Expedition","cadence":"seasonal","description":"Community-wide objective with individual milestones and cooperative rewards."}
+  ],
+  "fairness":{"payToWin":false,"purchasesMayAccelerateProgress":true,"coreGameplayAccessibleWithoutPurchase":true}
+}
