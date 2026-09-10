@@ -1,0 +1,15 @@
+{
+  "schema":"bizx.game.catalog.v1",
+  "currency":"wallet-payment",
+  "items":[
+    {"id":"time_30d","name":"30-Day Access","type":"time","description":"Adds 30 days of premium game/application access","consumable":false},
+    {"id":"time_90d","name":"90-Day Access","type":"time","description":"Adds 90 days of premium game/application access","consumable":false},
+    {"id":"xp_boost_7d","name":"7-Day XP Boost","type":"boost","description":"Gameplay progression boost for seven days","consumable":false},
+    {"id":"inventory_slot_10","name":"10 Inventory Slots","type":"utility","description":"Adds ten persistent inventory slots","consumable":false},
+    {"id":"cosmetic_skin_01","name":"Aurora Skin","type":"cosmetic","description":"Cosmetic character/vehicle skin","consumable":false},
+    {"id":"telemetry_map","name":"Explorer Map Pack","type":"content","description":"Adds interactive blockchain/explorer map views","consumable":false},
+    {"id":"hardware_wallet_case","name":"Hardware Wallet Case","type":"accessory","description":"Physical accessory sold through the commerce catalog","consumable":false},
+    {"id":"qr_keycard","name":"QR Backup Card","type":"accessory","description":"Offline paper/metal backup accessory; never contains a server-generated secret","consumable":false}
+  ],
+  "paymentFlow":["catalog","quote","wallet-connect","payment-preview","provider-sign","broadcast","confirmation","entitlement-or-fulfillment"]
+}
