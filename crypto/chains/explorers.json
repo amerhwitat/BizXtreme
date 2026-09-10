@@ -1,0 +1,22 @@
+{
+  "schema": "bizx.crypto.explorers.v1",
+  "policy": "extensible-registry",
+  "chains": {
+    "bitcoin": {"symbol":"BTC","explorer":"https://blockstream.info/address/{address}","tx":"https://blockstream.info/tx/{tx}"},
+    "ethereum": {"symbol":"ETH","explorer":"https://etherscan.io/address/{address}","tx":"https://etherscan.io/tx/{tx}"},
+    "bsc": {"symbol":"BNB","explorer":"https://bscscan.com/address/{address}","tx":"https://bscscan.com/tx/{tx}"},
+    "polygon": {"symbol":"MATIC","explorer":"https://polygonscan.com/address/{address}","tx":"https://polygonscan.com/tx/{tx}"},
+    "avalanche": {"symbol":"AVAX","explorer":"https://snowtrace.io/address/{address}","tx":"https://snowtrace.io/tx/{tx}"},
+    "solana": {"symbol":"SOL","explorer":"https://solscan.io/account/{address}","tx":"https://solscan.io/tx/{tx}"},
+    "litecoin": {"symbol":"LTC","explorer":"https://blockchair.com/litecoin/address/{address}","tx":"https://blockchair.com/litecoin/transaction/{tx}"},
+    "dogecoin": {"symbol":"DOGE","explorer":"https://dogechain.info/address/{address}","tx":"https://dogechain.info/tx/{tx}"},
+    "bitcoincash": {"symbol":"BCH","explorer":"https://blockchair.com/bitcoin-cash/address/{address}","tx":"https://blockchair.com/bitcoin-cash/transaction/{tx}"},
+    "xrp": {"symbol":"XRP","explorer":"https://xrpscan.com/account/{address}","tx":"https://xrpscan.com/tx/{tx}"},
+    "cardano": {"symbol":"ADA","explorer":"https://cardanoscan.io/address/{address}","tx":"https://cardanoscan.io/transaction/{tx}"},
+    "polkadot": {"symbol":"DOT","explorer":"https://polkadot.subscan.io/account/{address}","tx":"https://polkadot.subscan.io/extrinsic/{tx}"},
+    "tron": {"symbol":"TRX","explorer":"https://tronscan.org/#/address/{address}","tx":"https://tronscan.org/#/transaction/{tx}"},
+    "stellar": {"symbol":"XLM","explorer":"https://stellar.expert/explorer/public/account/{address}","tx":"https://stellar.expert/explorer/public/tx/{tx}"},
+    "ton": {"symbol":"TON","explorer":"https://tonscan.org/address/{address}","tx":"https://tonscan.org/tx/{tx}"}
+  },
+  "extension": "Add new chains through adapters; do not hard-code an assumption that this list is exhaustive."
+}
