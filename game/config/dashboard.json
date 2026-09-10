@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "kpis": ["score", "xp", "expedition", "playTime", "peerCount", "rank"],
+  "save": {"local": true, "autosaveSeconds": 30, "resume": true},
+  "hallOfFame": {"localEntries": 100, "sort": "score-desc", "offlineMode": true},
+  "peerDiscovery": {"optIn": true, "pseudonymousPeerIds": true, "rawIpPersistence": false, "signalingRequiredForWebRTC": true},
+  "splash": {"assetId": "bizxtreme-aurora-frontier", "format": "png", "displaySeconds": 2.2}
+}
