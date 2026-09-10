@@ -1,3 +1,4 @@
+import { BizXtremeCore } from './core/index.js';
 export { BizXtremeCore } from './core/index.js';
 export { WalletProvider, createWalletProvider } from './wallet/index.js';
 
