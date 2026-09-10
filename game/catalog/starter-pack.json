@@ -1,0 +1,14 @@
+{
+  "schema":"bizx.game.starter.v1",
+  "grantOnce":true,
+  "title":"Frontier Starter Pack",
+  "description":"A free welcome set so every player can begin the original game without purchasing anything.",
+  "items":[
+    {"id":"starter_outfit","name":"Frontier Outfit","type":"cosmetic","quantity":1},
+    {"id":"starter_tool","name":"Explorer Tool","type":"equipment","quantity":1},
+    {"id":"starter_vehicle_skin","name":"Rookie Runner Skin","type":"cosmetic","quantity":1},
+    {"id":"starter_map","name":"Frontier Map","type":"content","quantity":1},
+    {"id":"starter_supply","name":"Starter Supply Crate","type":"consumable","quantity":3},
+    {"id":"starter_inventory","name":"Starter Inventory Expansion","type":"utility","quantity":5}
+  ]
+}
