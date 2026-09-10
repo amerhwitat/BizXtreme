@@ -5,6 +5,6 @@
   "description": "Node.js implementation of BizXtreme business, wallet, crypto, WebGL and Chimera integration services.",
   "type": "module",
   "engines": {"node": ">=20"},
-  "scripts": {"start": "node src/index.js", "test": "node --test", "lint": "node --check src/index.js"},
-  "exports": {".": "./src/index.js", "./core": "./src/core/index.js", "./wallet": "./src/wallet/index.js"}
+  "scripts": {"start": "node src/game/launcher.js", "test": "node --test", "lint": "node --check src/index.js"},
+  "exports": {".": "./src/index.js", "./core": "./src/core/index.js", "./wallet": "./src/wallet/index.js", "./game": "./src/game/launcher.js"}
 }
