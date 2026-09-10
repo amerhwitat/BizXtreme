@@ -2,6 +2,7 @@ mergeInto(LibraryManager.library, {
   BizXWalletConnect: function (gameObjectPtr, callbackPtr) {
     const gameObject = UTF8ToString(gameObjectPtr);
     const callback = UTF8ToString(callbackPtr);
+    window.BizXUnityGameObject = gameObject;
     const provider = window.ethereum;
     if (!provider) {
       SendMessage(gameObject, callback, JSON.stringify({ ok:false, error:'No EVM wallet provider detected' }));
@@ -18,10 +19,8 @@ mergeInto(LibraryManager.library, {
     const provider = window.ethereum;
     if (!provider) return;
     provider.request({ method:'eth_getBalance', params:[address, 'latest'] })
-      .then(balance => SendMessage(gameObjectForCallback(), callback, JSON.stringify({ ok:true, address, balanceWei:balance })))
-      .catch(err => SendMessage(gameObjectForCallback(), callback, JSON.stringify({ ok:false, error:String(err && err.message || err) })));
-
-    function gameObjectForCallback() { return window.BizXUnityGameObject || ''; }
+      .then(balance => SendMessage(window.BizXUnityGameObject || '', callback, JSON.stringify({ ok:true, address, balanceWei:balance })))
+      .catch(err => SendMessage(window.BizXUnityGameObject || '', callback, JSON.stringify({ ok:false, error:String(err && err.message || err) })));
   },
 
   BizXWalletSend: function (txPtr, callbackPtr) {
