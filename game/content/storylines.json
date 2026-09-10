@@ -1,0 +1,12 @@
+{
+  "schema":"bizx.game.story.v1",
+  "title":"BizXtreme: The Living Frontier",
+  "principle":"Expand the original game without replacing its core gameplay loop.",
+  "chapters":[
+    {"id":"chapter_01","title":"Awakening","summary":"The player discovers a dormant frontier network and begins rebuilding their base, equipment and reputation.","missions":["Restore the base beacon","Complete the first expedition","Claim the starter supply crate"]},
+    {"id":"chapter_02","title":"The Broken Signal","summary":"Strange signals appear across the map. Players investigate ruins, trade resources and unlock new traversal routes.","missions":["Decode three signal fragments","Recover the lost navigation core","Open the northern route"]},
+    {"id":"chapter_03","title":"Frontier Alliance","summary":"Factions compete for control of strategic locations. The player chooses alliances and shapes future events.","missions":["Earn faction trust","Defend a relay","Choose an alliance"]},
+    {"id":"chapter_04","title":"The Black Aurora","summary":"A rare sky event changes the world and reveals hidden locations, limited-time challenges and unique cosmetics.","missions":["Locate an Aurora shard","Survive the night expedition","Unlock the Black Aurora collection"]},
+    {"id":"chapter_05","title":"The Great Expedition","summary":"A seasonal cooperative campaign brings players together for a world-scale objective while preserving normal gameplay for solo players.","missions":["Collect expedition components","Contribute to the global objective","Enter the final expedition"]}
+  ]
+}
