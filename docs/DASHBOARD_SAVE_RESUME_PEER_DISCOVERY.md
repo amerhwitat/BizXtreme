@@ -11,11 +11,11 @@ The game dashboard is the command center for the current expedition. Its KPI voc
 - Connected peer count
 - Best rank
 
-This follows established game-dashboard patterns where mission/progression and leaderboard information are surfaced together. The visual treatment follows the Aurora glass/neon art direction already used by BizXtreme.
+The visual treatment follows the Aurora glass/neon art direction already used by BizXtreme.
 
 ## Save / resume
 
-Three.js uses IndexedDB with a localStorage fallback. Unity uses a versioned `PlayerPrefs` JSON snapshot. Autosave is every 30 seconds in the browser client. A snapshot includes schema version, chapter, score, XP, expedition progress, play time, and UTC save time.
+Three.js uses IndexedDB with an immediate localStorage mirror for shutdown resilience. Unity uses a versioned `PlayerPrefs` JSON snapshot. Autosave is every 30 seconds in the browser client. A snapshot includes schema version, chapter, score, XP, expedition progress, play time, and UTC save time.
 
 A future authenticated cloud-save service may replicate the same schema. Local save remains usable offline.
 
@@ -27,7 +27,7 @@ The local Hall of Fame keeps the best 100 records and is available offline. A gl
 
 The game supports **opt-in** user discovery. A directory can return pseudonymous peer IDs, display names, capabilities, last-seen timestamps and a network hint. The client deliberately does not persist raw IP addresses.
 
-This is important because WebRTC is peer-to-peer for data transport, but peers still need signaling/ICE exchange to establish connections. citehttps://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Using_data_channels
+WebRTC data channels support bidirectional peer-to-peer application data, while signaling/ICE exchange remains necessary to establish connections.
 
 The application therefore does not scan the public Internet for arbitrary users or devices. It searches an application directory containing users who explicitly opted in.
 
@@ -39,10 +39,13 @@ The Aurora Frontier splash combines three Library references:
 - Chimera II OS Aurora Showcase
 - Aurora Wayland Desktop Showcase
 
-The packaged target is `BizXtremeSplash.png`. The Three.js client loads `threejs/assets/splash/bizxtreme-splash.png`; Unity loads `Resources/BizXtremeSplash`.
+The generated PNG is now packaged in the BizXtreme repository at:
 
-The visual language is informed by current futuristic exploration/game UI patterns: atmospheric aurora/frost themes, concise launch screens, mission dashboards, progress indicators and leaderboard surfaces. External references were used as design inspiration rather than copied artwork.
+- `threejs/assets/splash/bizxtreme-splash.png`
+- `Assets/Resources/BizXtremeSplash.png`
 
-## Binary asset packaging limitation
+The Three.js client displays the image during startup and Unity's `BizXSplashScreen` loads the same logical asset from Resources.
 
-The generated PNG has been prepared from the user's Library artwork, but the current repository text-content connector does not expose a binary GitHub upload operation. The repository therefore contains the asset contract and startup loaders, while the generated PNG remains separately available for the release packaging step.
+The visual language was also informed by current futuristic exploration/game UI references: atmospheric aurora/frost themes, concise launch screens, mission dashboards, progress indicators and leaderboard surfaces. External references were used as design inspiration rather than copied artwork.
+
+The original generated splash is also retained in the user's Library as the canonical packaging source.
