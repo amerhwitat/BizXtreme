@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BizXtremeDesktop", "BizXtremeDesktop.vcxproj", "{C0A4F1A7-9A0D-4B20-BD8D-7E7B0B2D3301}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BizXtremeDesktop", "BizXtremeDesktop.vcxproj", "{C0A4F1A7-9A0D-4B20-BD8D-7E7B0B2D3301}"
 EndProject
 Global
 GlobalSection(SolutionConfigurationPlatforms) = preSolution
