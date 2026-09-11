@@ -1,58 +1,48 @@
 # BizXtreme
 
-BizXtreme is the extended BizX application/integration repository, including WebGL/Three.js, wallet, crypto, game, Aurora, and Chimera integration material.
+BizXtreme is the extended BizX application/game repository, including WebGL/Three.js, Unity/C#, wallet, crypto, game, Aurora, and Chimera integration material.
 
 ## Language-separated implementations
 
-- `nodejs/` — Node.js 20+ server/integration implementation.
-- `java/` — Java 17+ implementation using Maven.
-- `python/` — Python 3.10+ implementation.
-- `javascript/` — browser JavaScript implementation where applicable.
-- `typescript/` — TypeScript implementation where applicable.
+- `desktop/vcpp/` — standalone native Visual C++ Windows desktop implementation.
+- `desktop/dotnet/` — standalone C# WPF Windows desktop implementation targeting `net48` and `net6.0-windows`.
+- `nodejs/` — Node.js implementation.
+- `java/` — Java implementation.
+- `python/` — Python implementation.
+- `javascript/` — browser JavaScript implementation.
+- `typescript/` — TypeScript implementation.
 - `web/` — browser/WebGL application material.
-- `Assets/` — Unity/C# application assets and packaged resources.
+- `Assets/` — existing Unity/C# application assets and packaged resources.
+- `threejs/` — existing Three.js implementation.
 - `docs/` — language-neutral architecture and integration documentation.
 
-Source implementations are separated by programming language. Packaged APK/WebGL artifacts remain artifacts and are not represented as Java, Python, or Node.js source.
+Source implementations are separated by programming language. The new native VC++ and WPF desktop applications are independent source trees and do not mix C++ and C# implementation files.
 
-## Single-point game entry
+## Standalone Windows desktop editions
 
-Each supported runtime has a language-native game/application launcher. The launcher starts BizXtreme through that runtime's public API/core boundary while keeping language-specific source isolated.
+### VC++
 
-| Runtime | Single entry point | Start command |
-|---|---|---|
-| Node.js 20+ | `nodejs/src/game/launcher.js` | `npm start` from `nodejs/` |
-| Java 17+ | `java/src/main/java/io/amerhwitat/bizxtreme/GameLauncher.java` | `java -cp target/classes io.amerhwitat.bizxtreme.GameLauncher` after `mvn package` |
-| Python 3.10+ | `python/bizxtreme/game_launcher.py` / `python/bizxtreme/__main__.py` | `python -m bizxtreme` from `python/` |
-| Browser JavaScript | language-native browser entry | see `javascript/` / `web/` documentation |
-| TypeScript | language-native application entry | see `typescript/` documentation |
-| Unity/C# | Unity application entry | see `Assets/` documentation |
+Open `desktop/vcpp/BizXtremeDesktop.sln` in Visual Studio. The application is C++20/MSVC v143, Unicode, x64, and implements an independent Aurora Frontier dashboard with story progression, score, XP, expedition progress, save/resume, Hall of Fame, and privacy-preserving player discovery.
 
-See [`docs/GAME_ENTRYPOINTS.md`](docs/GAME_ENTRYPOINTS.md) for the complete launcher contract and runtime matrix.
+### C# / WPF
 
-## Node.js
+Open `desktop/dotnet/BizXtreme.Desktop.sln`. The project targets `net48` and `net6.0-windows`; the .NET 6 target is configured for x64 self-contained single-file publishing.
 
-```bash
-cd nodejs
-npm test
-npm start
-```
+Microsoft terminology is preserved: `net6.0` is modern .NET 6, while .NET Framework uses targets such as `net48`. There is no “.NET Framework 6.0” TFM.
 
-## Java
+See [`docs/DESKTOP_CPP_AND_DOTNET.md`](docs/DESKTOP_CPP_AND_DOTNET.md).
 
-```bash
-cd java
-mvn test
-mvn package
-java -cp target/classes io.amerhwitat.bizxtreme.GameLauncher
-```
+## Existing runtime entry points
 
-## Python
+| Runtime | Entry point |
+|---|---|
+| VC++ desktop | `desktop/vcpp/BizXtremeDesktop.cpp` |
+| C# desktop | `desktop/dotnet/BizXtreme.Desktop/MainWindow.xaml` |
+| Node.js | `nodejs/src/game/launcher.js` |
+| Java | `java/src/main/java/io/amerhwitat/bizxtreme/GameLauncher.java` |
+| Python | `python/bizxtreme/game_launcher.py` / `python/bizxtreme/__main__.py` |
+| Browser JavaScript | `javascript/` / `web/` |
+| TypeScript | `typescript/` |
+| Unity/C# | `Assets/` |
 
-```bash
-cd python
-python -m unittest discover -s tests
-python -m bizxtreme
-```
-
-Java and Python provide native application/service boundaries while Node.js provides the server/web integration foundation. Browser, TypeScript, Unity/C#, and packaged application material remain in their appropriate language/runtime trees.
+The new desktop applications complement rather than replace the existing implementations.
