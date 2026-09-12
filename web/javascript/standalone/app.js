@@ -1,0 +1,1 @@
+let progress=0;const state=document.querySelector('#state');document.querySelector('#advance').onclick=()=>{progress=Math.min(100,progress+10);state.textContent=`Expedition: ${progress}%`;};
