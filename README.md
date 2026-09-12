@@ -8,13 +8,18 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 - `desktop/dotnet/` — standalone C# WPF Windows desktop implementation.
 - `nodejs/`, `java/`, `python/`, `javascript/`, `typescript/`, `web/`, `Assets/`, `threejs/` — existing runtime/application implementations.
 - `kotlin/mobile/` — Android Kotlin mobile application.
+- `apple/` — iOS/iPadOS and macOS SwiftUI/Xcode source boundary.
 - `docs/` — language-neutral architecture and integration documentation.
 
 ## Mobile communications
 
-BizXtreme Mobile uses the shared conversation contract with BizX: conversation ID, sender ID, monotonic sequence and SHA-256 payload integrity. It provides microphone/speaker/camera capability detection and a WebRTC media boundary for synchronized voice/video sessions. Runtime permissions are requested at the point of user action. See [`kotlin/mobile/COMMUNICATIONS.md`](kotlin/mobile/COMMUNICATIONS.md).
+BizXtreme Mobile uses the shared conversation contract with BizX: conversation ID, sender ID, monotonic sequence and SHA-256 payload integrity. It provides microphone/speaker/camera capability detection and a WebRTC media boundary for synchronized voice/video sessions. Runtime permissions are requested at the point of user action. See `kotlin/mobile/COMMUNICATIONS.md`.
 
 BizXtreme is the second primary integration target for synchronized IRC-style channels, presence, voice/video sessions and shared application/game conversation state.
+
+## Apple applications
+
+`apple/project.yml` is an XcodeGen specification for iOS and macOS application targets. `apple/Sources/` contains the SwiftUI entry point and application boundary. On macOS, install Xcode and XcodeGen, run `xcodegen generate`, then build/archive/export with the Apple scripts. Signing material stays outside Git.
 
 ## Standalone Windows desktop editions
 
