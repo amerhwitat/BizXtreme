@@ -1,6 +1,6 @@
 # BizXtreme
 
-BizXtreme is the extended BizX application/game repository, including WebGL/Three.js, Unity/C#, wallet, crypto, game, Aurora, Chimera integration and Kotlin mobile material.
+BizXtreme is the extended BizX application/game repository, including WebGL/Three.js, Unity/C#, wallet, crypto, game, Aurora, Chimera integration, Kotlin mobile and Flutter mobile material.
 
 ## Source-code citation index
 
@@ -13,6 +13,9 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 | Realtime rendering | [rendering/](rendering/) |
 | Multi-chain crypto | [crypto/](crypto/) |
 | Game/store/storyboards | [game-store/](game-store/) |
+| Kotlin mobile | [mobile/kotlin/](mobile/kotlin/) |
+| Flutter mobile | [mobile/flutter/](mobile/flutter/) |
+| P2P/presence policy | [network/](network/) |
 | Node.js | [nodejs/](nodejs/) |
 | Java | [java/](java/) |
 | Python | [python/](python/) |
@@ -21,32 +24,34 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 | Web | [web/](web/) |
 | Three.js/WebGL | [threejs/](threejs/) |
 | Existing Unity/C# | [Assets/](Assets/) |
-| Kotlin mobile | [kotlin/mobile/](kotlin/mobile/) |
 | Apple/Swift | [apple/](apple/) |
-| Chimera integration | [chimera/](chimera/) |
-| Aurora integration | [aurora_integration.json](aurora_integration.json) |
 | Documentation | [docs/](docs/) |
 
-## Realtime rendering and open game content
+## Mobile game hub
 
-`rendering/` contains the renderer capability architecture for Unity, Godot 4, OGRE, Bevy, bgfx, Filament and Three.js. `game-store/` adds a license-aware catalog for free, donation and low-price 2D/3D/4D storyboard/game content. 4D storyboards are represented as time-indexed 2D/3D states. Public visibility is never treated as a reuse license; imports retain source, license, attribution and SHA-256 metadata.
+Kotlin Multiplatform and Flutter shells now provide a common starting menu for 2D storyboard games, 3D worlds, 4D time-indexed worlds, wallet setup, secure backup/snapshot hooks, saves, hall of fame, store content and opt-in peer presence.
 
-## Multi-chain crypto
+Flutter's official Games Toolkit provides open-source multiplatform 2D templates and Flame provides a modular Flutter game engine for mobile, desktop and web. Kotlin Multiplatform supports shared Android/iOS logic and Compose Multiplatform UI.
 
-`crypto/` adds a chain-agnostic, self-custody-first API for balance discovery, receive addresses, send intents, buy/sell provider intents, swaps/exchanges and sweep planning across Bitcoin/UTXO, EVM, Solana, TON and additional adapter-defined networks.
+## Wallets, saves and snapshots
 
-Private keys and seed phrases stay outside Unity assets, scenes, saves, telemetry and logs. Live signing is delegated to a user-controlled wallet/provider and requires explicit confirmation. Sweep is a plan until the user approves transactions.
+Wallet secrets are isolated from gameplay. Recovery phrases/private keys must stay in platform secure storage or a user-controlled wallet provider and never be copied into saves, logs, screenshots, telemetry or peer traffic. Backup manifests describe state without containing secret material.
 
-Research and interoperability references include Tether WDK, Wallet Standard, WalletConnect specifications and Uniswap Smart Order Router. Third-party source is not copied into this repository merely because it is public.
+## P2P/presence
 
-## Licensing
+Presence is consent-based. The client uses a random peer ID and can display live connected/disconnected state. Raw IP addresses are not exposed to other users or stored in player profiles. Exact location is not inferred from IP; an optional coarse region can be self-selected.
 
-New and modified BizXtreme code is intended for GNU GPL v3 or later. Third-party assets, Unity packages, wallet SDKs, exchange providers and engine SDKs retain their own licenses.
+## Storyboards and store
+
+`game-store/storyboards/` contains license-gated templates for 2D/3D/4D implementations. Public accessibility is not treated as a reuse license. Imports preserve source, license, attribution and integrity metadata.
 
 ## External documentation citations
 
-- Epic Games, Unreal Engine FBX Content Pipeline: https://dev.epicgames.com/documentation/en-us/unreal-engine/fbx-content-pipeline
-- Unity, AssetPostprocessor: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/AssetPostprocessor.html
+- Flutter Games: https://flutter.dev/games
+- Flutter Games Toolkit: https://docs.flutter.dev/resources/games-toolkit
+- Flame: https://github.com/flame-engine/flame
+- Kotlin Multiplatform: https://kotlinlang.org/docs/multiplatform.html
+- Android Kotlin Multiplatform: https://developer.android.com/kotlin/multiplatform
 - Tether WDK: https://wdk.tether.io/
 - WalletConnect Specifications: https://github.com/WalletConnect/walletconnect-specs
 - Wallet Standard: https://github.com/wallet-standard/wallet-standard
