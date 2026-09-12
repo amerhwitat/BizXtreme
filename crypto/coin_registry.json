@@ -1,0 +1,9 @@
+{
+  "schema_version":"1.0",
+  "strategy":"adapter-based-unbounded-asset-registry",
+  "networks":[
+    {"id":"bitcoin","family":"utxo"},{"id":"ethereum","family":"evm"},{"id":"polygon","family":"evm"},{"id":"arbitrum","family":"evm"},{"id":"optimism","family":"evm"},{"id":"base","family":"evm"},{"id":"bsc","family":"evm"},{"id":"avalanche","family":"evm"},{"id":"solana","family":"solana"},{"id":"ton","family":"ton"}
+  ],
+  "asset_discovery":{"native_assets":true,"token_standards":["ERC-20","ERC-721","ERC-1155","SPL"],"unknown_assets":"read-only-until-metadata-and-policy-verified"},
+  "live_operations":{"send":"explicit-confirmation","buy":"provider-and-jurisdiction-gated","sell":"provider-and-jurisdiction-gated","swap":"quote-then-explicit-confirmation","exchange":"provider-adapter","sweep":"plan-only-until-explicit-confirmation"}
+}
