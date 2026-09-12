@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"BizXtreme Storyboard",
+  "type":"object",
+  "required":["id","dimension","scenes"],
+  "properties":{
+    "id":{"type":"string"},
+    "dimension":{"enum":["2D","3D","4D"]},
+    "scenes":{"type":"array","items":{"type":"object","required":["id","duration"],"properties":{"id":{"type":"string"},"duration":{"type":"number","minimum":0},"camera":{"type":"object"},"entities":{"type":"array","items":{"type":"object"}},"frames":{"type":"array","items":{"type":"object"}}}}}
+  }
+}
