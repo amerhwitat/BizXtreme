@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"BizXtreme Store Item",
+  "type":"object",
+  "required":["id","title","media","price_model","source","license"],
+  "properties":{
+    "id":{"type":"string"},"title":{"type":"string"},
+    "media":{"enum":["2d","3d","4d","storyboard","game-template"]},
+    "engines":{"type":"array","items":{"type":"string"}},
+    "price_model":{"enum":["free","donation","low_price"]},"price":{"type":"number","minimum":0},"currency":{"type":"string"},
+    "source":{"type":"string","format":"uri"},"license":{"type":"string"},"attribution":{"type":"string"},"sha256":{"type":"string"},
+    "checkout":{"enum":["none","external","crypto-intent"]}
+  }
+}
