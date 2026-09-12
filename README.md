@@ -10,6 +10,9 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 | Windows C# / WPF | [desktop/dotnet/](desktop/dotnet/) |
 | Unity 3D C# package | [Unity3D/](Unity3D/) |
 | Portable 3D assets | [3D/assets/](3D/assets/) |
+| Realtime rendering | [rendering/](rendering/) |
+| Multi-chain crypto | [crypto/](crypto/) |
+| Game/store/storyboards | [game-store/](game-store/) |
 | Node.js | [nodejs/](nodejs/) |
 | Java | [java/](java/) |
 | Python | [python/](python/) |
@@ -24,39 +27,30 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 | Aurora integration | [aurora_integration.json](aurora_integration.json) |
 | Documentation | [docs/](docs/) |
 
-## Language-separated implementations
+## Realtime rendering and open game content
 
-- `desktop/vcpp/` — standalone native Visual C++ Windows desktop implementation.
-- `desktop/dotnet/` — standalone C# WPF Windows desktop implementation.
-- `Unity3D/` — Unity C# package and editor integration.
-- `3D/assets/` — engine-neutral demonstration geometry.
-- `nodejs/`, `java/`, `python/`, `javascript/`, `typescript/`, `web/`, `Assets/`, `threejs/` — runtime/application implementations.
-- `docs/` — language-neutral architecture and integration documentation.
+`rendering/` contains the renderer capability architecture for Unity, Godot 4, OGRE, Bevy, bgfx, Filament and Three.js. `game-store/` adds a license-aware catalog for free, donation and low-price 2D/3D/4D storyboard/game content. 4D storyboards are represented as time-indexed 2D/3D states. Public visibility is never treated as a reuse license; imports retain source, license, attribution and SHA-256 metadata.
 
-## Unreal Engine 5 / Unity 3D interoperability
+## Multi-chain crypto
 
-BizXtreme's requested C# implementation is centered on Unity 3D under `Unity3D/`. It contains a UPM package manifest, runtime world-object model and an editor `AssetPostprocessor` that applies deterministic model-import defaults for FBX, OBJ and glTF assets.
+`crypto/` adds a chain-agnostic, self-custody-first API for balance discovery, receive addresses, send intents, buy/sell provider intents, swaps/exchanges and sweep planning across Bitcoin/UTXO, EVM, Solana, TON and additional adapter-defined networks.
 
-Portable geometry is under `3D/assets/`. The included OBJ can be imported into Unity and Unreal-compatible DCC workflows. Unreal Engine 5 interoperability is intentionally engine-neutral in this repository; the native C++ UE5 plugin boundary is maintained in BizX's `Unreal5/BizXUnreal/` so the two repositories share one native module instead of duplicating C++ code.
+Private keys and seed phrases stay outside Unity assets, scenes, saves, telemetry and logs. Live signing is delegated to a user-controlled wallet/provider and requires explicit confirmation. Sweep is a plan until the user approves transactions.
 
-See [`docs/UNREAL5_AND_UNITY3D.md`](docs/UNREAL5_AND_UNITY3D.md).
-
-## Mobile communications
-
-BizXtreme Mobile uses the shared conversation contract with BizX: conversation ID, sender ID, monotonic sequence and SHA-256 payload integrity. It provides microphone/speaker/camera capability detection and a WebRTC media boundary.
-
-## Chimera 128D + authenticated P2P
-
-BizXtreme participates in the shared Chimera multidimensional application fabric. The optional P2P layer is authenticated and opt-in and supports capability exchange, request/response, pub/sub, snapshot/delta synchronization, content-addressed state, sequence numbers and payload integrity.
+Research and interoperability references include Tether WDK, Wallet Standard, WalletConnect specifications and Uniswap Smart Order Router. Third-party source is not copied into this repository merely because it is public.
 
 ## Licensing
 
-New and modified BizXtreme code is intended for GNU GPL v3 or later. Third-party assets, Unity packages and engine SDKs retain their own licenses.
+New and modified BizXtreme code is intended for GNU GPL v3 or later. Third-party assets, Unity packages, wallet SDKs, exchange providers and engine SDKs retain their own licenses.
 
 ## External documentation citations
 
 - Epic Games, Unreal Engine FBX Content Pipeline: https://dev.epicgames.com/documentation/en-us/unreal-engine/fbx-content-pipeline
-- Epic Games, Datasmith Import: https://dev.epicgames.com/documentation/en-us/unreal-engine/importing-datasmith-content-into-unreal-engine
-- Epic Games, Datasmith supported formats: https://dev.epicgames.com/documentation/en-us/unreal-engine/datasmith-supported-software-and-file-types
-- Unity, Asset Store package formats: https://docs.unity.com/en-us/asset-store/publishing/introduction
 - Unity, AssetPostprocessor: https://docs.unity3d.com/6000.0/Documentation/ScriptReference/AssetPostprocessor.html
+- Tether WDK: https://wdk.tether.io/
+- WalletConnect Specifications: https://github.com/WalletConnect/walletconnect-specs
+- Wallet Standard: https://github.com/wallet-standard/wallet-standard
+- Uniswap Smart Order Router: https://github.com/Uniswap/smart-order-router
+- OpenGameArt: https://opengameart.org/
+- Poly Haven license: https://polyhaven.com/license
+- Poly Haven API: https://api.polyhaven.com/
