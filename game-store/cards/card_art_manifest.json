@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "art_policy": "original_or_license_verified",
+  "style": "premium_vector_tabletop",
+  "card_faces": {"suits":["clubs","diamonds","hearts","spades"],"ranks":["A","2","3","4","5","6","7","8","9","10","J","Q","K"],"rendering":"programmatic_svg_or_canvas"},
+  "backs": ["midnight_gold", "emerald_filigree", "royal_geometric"],
+  "chips": ["ivory","gold","ruby","sapphire","onyx"],
+  "splash_themes": ["royal_table","neon_arcade","desert_adventure","trex_runner"],
+  "note": "Use original vector artwork or license-verified assets only. Preserve source, license, attribution and checksum for every imported asset."
+}
