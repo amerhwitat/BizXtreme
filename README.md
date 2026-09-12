@@ -15,17 +15,8 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 - `Assets/` — existing Unity/C# application assets and packaged resources.
 - `threejs/` — existing Three.js implementation.
 - `docs/` — language-neutral architecture and integration documentation.
-- `chimera/` — shared 128D/P2P interoperability contracts.
 
 Source implementations are separated by programming language. The new native VC++ and WPF desktop applications are independent source trees and do not mix C++ and C# implementation files.
-
-## Chimera multidimensional integration
-
-BizXtreme uses the Chimera multidimensional application-state model: geometry, time, observer/perspective, light/material response, events, objects, properties, interactions, and extensible cognitive/vector state. The 128D base can be extended without changing the interoperability envelope.
-
-## Peer-to-peer integration
-
-`chimera/p2p_protocol.json` defines authenticated peer identity, capability exchange, request/response and publish/subscribe, sequence/replay controls, content-addressed synchronization, and local-first operation. Discovery is limited to configured/bootstrap peers; arbitrary Internet scanning is not part of the application protocol.
 
 ## Standalone Windows desktop editions
 
@@ -54,8 +45,14 @@ See [`docs/DESKTOP_CPP_AND_DOTNET.md`](docs/DESKTOP_CPP_AND_DOTNET.md).
 | TypeScript | `typescript/` |
 | Unity/C# | `Assets/` |
 
-## License
+## Chimera 128D + authenticated P2P
 
-Released under the GNU General Public License v3 or later for original project code. Existing third-party components retain their original licenses; see their notices. See `LICENSE` where provided.
+BizXtreme participates in the shared Chimera multidimensional application fabric. World/game state uses the 128D baseline—geometry, time, observer/perspective, light/material response, events, objects, properties and interaction rules—with an extensible perception/cognition overlay.
 
-The new desktop applications complement rather than replace the existing implementations.
+The optional P2P layer is authenticated and opt-in. It supports peer capability exchange, request/response, pub/sub, snapshot/delta synchronization, content-addressed state, sequence numbers and payload integrity. It does not perform unsolicited scanning, credential exchange, arbitrary executable transfer or remote command execution.
+
+C++, C#, Java, Node.js, Python, JavaScript, TypeScript, Unity/C# and WebGL components should remain semantically compatible through the common wire/schema contract while using native networking facilities. See [`docs/CHIMERA_128D_P2P_INTEGRATION.md`](docs/CHIMERA_128D_P2P_INTEGRATION.md).
+
+## Licensing
+
+New and modified BizXtreme code is intended for GNU GPL v3 or later. Third-party assets and dependencies retain their own licenses. See the repository `LICENSE` file and the GNU GPLv3 terms.
