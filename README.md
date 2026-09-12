@@ -18,6 +18,7 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 | Kotlin mobile | [mobile/kotlin/](mobile/kotlin/) |
 | Flutter mobile | [mobile/flutter/](mobile/flutter/) |
 | P2P/presence policy | [network/](network/) |
+| Client/server/host networking | [network/ClientServerNetwork.md](network/ClientServerNetwork.md) |
 | Node.js | [nodejs/](nodejs/) |
 | Java | [java/](java/) |
 | Python | [python/](python/) |
@@ -33,8 +34,6 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 
 The main menu now includes Texas Hold’em Poker, Blackjack, a Classic Card Suite (Klondike, FreeCell, Hearts, Spades, Crazy Eights and War), and an original T-Rex Runner alongside the existing 2D/3D/4D worlds, wallet, saves, Hall of Fame, store and peer-presence features.
 
-Flutter's official Games Toolkit provides a card-game template with game-state management and multiplayer hooks; Flame provides the real-time 2D game-loop model. Kotlin Multiplatform supports shared Android/iOS logic. These sources informed architecture; third-party code was not copied.
-
 ## Artwork and game flow
 
 Original vector splash and card-table artwork lives under `mobile/flutter/assets/art/`. Game flow metadata lives in `game-store/storyboards/card-games-and-trex.json`. Card rendering is data-driven from a standard deck model.
@@ -43,9 +42,9 @@ Original vector splash and card-table artwork lives under `mobile/flutter/assets
 
 Wallet secrets are isolated from gameplay. Recovery phrases/private keys must stay in platform secure storage or a user-controlled wallet provider and never be copied into saves, logs, screenshots, telemetry or peer traffic.
 
-## P2P/presence
+## P2P/presence and client/server networking
 
-Presence is consent-based. The client uses a random peer ID and can display live connected/disconnected state. Raw IP addresses are not exposed to other users or stored in player profiles. Exact location is not inferred from IP.
+Presence is consent-based. `network/ClientServerNetwork.md` adds Client, Server, Host and Hybrid modes alongside P2P. Networking launches from the existing application UI. Users select a nickname and avatar, and can upload a validated local PNG/JPEG/WebP avatar when built-in choices are unavailable. Host mode runs a local client against the embedded server so host actions follow the same routing and authorization path as remote clients.
 
 ## Public release
 
