@@ -21,12 +21,15 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 | Chimera integration | [chimera/](chimera/) |
 | Aurora integration | [aurora_integration.json](aurora_integration.json) |
 | Documentation | [docs/](docs/) |
+| Complete repository source tree | [all tracked source](.) |
+
+The links above are the README-level citations for the maintained code; language/component READMEs provide deeper file-level inventories.
 
 ## Language-separated implementations
 
 - `desktop/vcpp/` — standalone native Visual C++ Windows desktop implementation.
 - `desktop/dotnet/` — standalone C# WPF Windows desktop implementation.
-- `nodejs/`, `java/`, `python/`, `javascript/`, `typescript/`, `web/`, `Assets/`, `threejs/` — existing runtime/application implementations.
+- `nodejs/`, `java/`, `python/`, `javascript/`, `typescript/`, `web/`, `Assets/`, `threejs/` — runtime/application implementations.
 - `kotlin/mobile/` — Android Kotlin mobile application.
 - `apple/` — iOS/iPadOS and macOS SwiftUI/Xcode source boundary.
 - `docs/` — language-neutral architecture and integration documentation.
