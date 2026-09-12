@@ -19,7 +19,7 @@ BizXtreme is the second primary integration target for synchronized IRC-style ch
 
 ## Apple applications
 
-`apple/project.yml` is an XcodeGen specification for iOS and macOS application targets. `apple/Sources/` contains the SwiftUI entry point and application boundary. On macOS, install Xcode and XcodeGen, run `xcodegen generate`, then build/archive/export with the Apple scripts. Signing material stays outside Git.
+`apple/project.yml` is an XcodeGen specification for iOS and macOS application targets. `apple/Sources/` contains the SwiftUI entry point and application boundary. The centralized Objective-C and Flutter companion is maintained in [`general/Apple-Implementations/BizXtreme`](https://github.com/amerhwitat/general/tree/master/Apple-Implementations/BizXtreme). On macOS, install Xcode/XcodeGen, generate the project, then build/archive/export. Signing material stays outside Git.
 
 ## Standalone Windows desktop editions
 
