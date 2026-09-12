@@ -1,0 +1,3 @@
+class TrexState { double distance=0,speed=7; int score=0; bool jumping=false,gameOver=false; void tick(double dt){if(gameOver)return;distance+=speed*dt;score=distance.floor();speed=7+(score/500).clamp(0,8);} void jump(){if(!gameOver)jumping=true;} void land(){jumping=false;} void reset(){distance=0;speed=7;score=0;jumping=false;gameOver=false;} }
+class TrexObstacle { final String kind; final double worldX; const TrexObstacle(this.kind,this.worldX); }
+class TrexLevel { static const obstacles=<TrexObstacle>[TrexObstacle('cactus-small',420),TrexObstacle('cactus-tall',760),TrexObstacle('bird-low',1120),TrexObstacle('cactus-cluster',1510)]; }
