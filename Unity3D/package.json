@@ -1,0 +1,8 @@
+{
+  "name": "com.amerhwitat.bizxtreme",
+  "version": "1.0.0",
+  "displayName": "BizXtreme Unity 3D Integration",
+  "description": "C# runtime/editor integration and import helpers for BizXtreme.",
+  "unity": "6000.0",
+  "author": { "name": "Amer Hwitat / BizXtreme" }
+}
