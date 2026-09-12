@@ -1,0 +1,3 @@
+# Build automation
+
+Use `build-tools/build.bat`, `build-tools/build.ps1`, or `build-tools/build.sh` to run the detected repository build with live dependency/compile/package progress. Add `--dry-run` to inspect commands. Use `--only python --onefile` for PyInstaller, `--only java` for Java, `--only node` for web/Node, `--only native` for CMake/native, and `--only sql` to inventory SQL scripts. Build artifacts stay under `build/`. Target-native runners are required for PyInstaller OS-specific executables.
