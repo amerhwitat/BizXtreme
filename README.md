@@ -16,21 +16,53 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 - `threejs/` — existing Three.js implementation.
 - `docs/` — language-neutral architecture and integration documentation.
 
-Source implementations are separated by programming language. The new native VC++ and WPF desktop applications are independent source trees and do not mix C++ and C# implementation files.
+## Build and run
 
-## Standalone Windows desktop editions
+Use the unified build layer first:
 
-### VC++
+```bat
+build-tools\build.bat
+```
 
-Open `desktop/vcpp/BizXtremeDesktop.sln` in Visual Studio. The application is C++20/MSVC v143, Unicode, x64, and implements an independent Aurora Frontier dashboard with story progression, score, XP, expedition progress, save/resume, Hall of Fame, and privacy-preserving player discovery.
+or:
+
+```powershell
+.\build-tools\build.ps1
+```
+
+### VC++ desktop
+
+Open `desktop/vcpp/BizXtremeDesktop.sln` in Visual Studio and select `Release|x64`, or use the repository MSVC wrapper.
 
 ### C# / WPF
 
-Open `desktop/dotnet/BizXtreme.Desktop.sln`. The project targets `net48` and `net6.0-windows`; the .NET 6 target is configured for x64 self-contained single-file publishing.
+```powershell
+dotnet build desktop\dotnet\BizXtreme.Desktop.sln -c Release
+```
 
-Microsoft terminology is preserved: `net6.0` is modern .NET 6, while .NET Framework uses targets such as `net48`. There is no “.NET Framework 6.0” TFM.
+### Node.js
 
-See [`docs/DESKTOP_CPP_AND_DOTNET.md`](docs/DESKTOP_CPP_AND_DOTNET.md).
+```bash
+cd nodejs && npm ci && npm test
+node src/game/launcher.js
+```
+
+### Java
+
+```bash
+cd java && mvn test
+```
+
+### Python
+
+```bash
+python -m pip install -r python/requirements.txt
+python python/bizxtreme/game_launcher.py
+```
+
+### Web / Three.js
+
+Enter `web/` or `threejs/`, install the declared package-manager dependencies and run the package's documented development/build script. Do not mix the browser runtime with the desktop source tree.
 
 ## Existing runtime entry points
 
@@ -45,4 +77,4 @@ See [`docs/DESKTOP_CPP_AND_DOTNET.md`](docs/DESKTOP_CPP_AND_DOTNET.md).
 | TypeScript | `typescript/` |
 | Unity/C# | `Assets/` |
 
-The new desktop applications complement rather than replace the existing implementations.
+The desktop applications complement rather than replace the existing implementations.
