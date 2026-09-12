@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "policy": "license_verified_external_assets",
+  "primary_deck": {
+    "name": "OpenDecks Public Domain / CC0 Playing Cards",
+    "repository": "AustinGabriel/OpenDecks-Public-Domain-and-CC0-Playing-Cards",
+    "license": "CC0-1.0 / public domain",
+    "source": "https://github.com/AustinGabriel/OpenDecks-Public-Domain-and-CC0-Playing-Cards",
+    "formats": ["svg", "png"],
+    "contents": "52 standard cards + 2 jokers + card backs",
+    "integration": "Fetched by mobile/flutter/scripts/fetch_card_art.* into mobile/flutter/assets/art/cc0-public-domain-deck/"
+  },
+  "alternates": [
+    {"name":"Kenney Playing Cards Pack","source":"https://kenney.nl/assets/playing-cards-pack","license":"CC0-1.0","use":"optional alternate art"},
+    {"name":"OpenGameArt Cards","source":"https://opengameart.org/content/cards-0","license":"CC0","use":"optional SVG alternative"},
+    {"name":"OpenGameArt Bridge-Sized Playing Card Deck","source":"https://opengameart.org/content/bridge-sized-playing-card-deck-png-cc0","license":"CC0","use":"optional PNG alternative"}
+  ],
+  "requirements": [
+    "Do not silently replace a licensed source with an unverified image.",
+    "Keep the source URL and license metadata with imported assets.",
+    "Re-run the fetch script when refreshing the external asset cache.",
+    "The game engine must fall back to programmatic cards if external assets are absent."
+  ]
+}
