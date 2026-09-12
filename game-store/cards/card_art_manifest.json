@@ -1,10 +1,18 @@
 {
-  "version": 1,
-  "art_policy": "original_or_license_verified",
+  "version": 2,
+  "art_policy": "license_verified_external_assets_with_fallback",
   "style": "premium_vector_tabletop",
-  "card_faces": {"suits":["clubs","diamonds","hearts","spades"],"ranks":["A","2","3","4","5","6","7","8","9","10","J","Q","K"],"rendering":"programmatic_svg_or_canvas"},
-  "backs": ["midnight_gold", "emerald_filigree", "royal_geometric"],
+  "primary_source": {
+    "name": "OpenDecks Public Domain / CC0 Playing Cards",
+    "repository": "AustinGabriel/OpenDecks-Public-Domain-and-CC0-Playing-Cards",
+    "license": "CC0-1.0 / public domain",
+    "source": "https://github.com/AustinGabriel/OpenDecks-Public-Domain-and-CC0-Playing-Cards",
+    "formats": ["svg", "png"]
+  },
+  "card_faces": {"suits":["clubs","diamonds","hearts","spades"],"ranks":["A","2","3","4","5","6","7","8","9","10","J","Q","K"],"rendering":"licensed_local_asset_or_programmatic_fallback"},
+  "backs": ["blue", "red"],
   "chips": ["ivory","gold","ruby","sapphire","onyx"],
   "splash_themes": ["royal_table","neon_arcade","desert_adventure","trex_runner"],
-  "note": "Use original vector artwork or license-verified assets only. Preserve source, license, attribution and checksum for every imported asset."
+  "install": "mobile/flutter/scripts/fetch_card_art.*",
+  "note": "Imported art must retain its license/source metadata. If the cache is absent, the application uses programmatic/vector card rendering."
 }
