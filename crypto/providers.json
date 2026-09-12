@@ -1,0 +1,9 @@
+{
+  "wallet":[
+    {"name":"Tether WDK","role":"self-custodial multi-chain wallet SDK","source":"https://wdk.tether.io/"},
+    {"name":"WalletConnect","role":"external wallet connection/specifications","source":"https://github.com/WalletConnect/walletconnect-specs"},
+    {"name":"Wallet Standard","role":"wallet interoperability conventions","source":"https://github.com/wallet-standard/wallet-standard"}
+  ],
+  "swap":[{"name":"Uniswap Smart Order Router","role":"EVM swap routing research/adapter","source":"https://github.com/Uniswap/smart-order-router"}],
+  "policy":"No credentials or private keys in source. Live transactions require explicit user confirmation."
+}
