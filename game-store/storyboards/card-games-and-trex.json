@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "original_artwork": true,
+  "games": [
+    {"id":"poker-holdem","title":"Texas Hold’em Poker","modes":["single-player","online-multiplayer"],"flow":["lobby","deal","pre-flop","flop","turn","river","showdown","result","save"],"asset_policy":"original-or-license-verified"},
+    {"id":"blackjack","title":"Blackjack","modes":["single-player","online-multiplayer"],"flow":["table","bet-intent","deal","player-action","dealer-action","result","save"],"asset_policy":"original-or-license-verified"},
+    {"id":"classic-cards","title":"Classic Card Suite","games":["Klondike Solitaire","FreeCell","Hearts","Spades","Crazy Eights","War"],"modes":["single-player","local-multiplayer","online-multiplayer"],"asset_policy":"original-or-license-verified"},
+    {"id":"trex-runner","title":"T-Rex Runner","modes":["single-player"],"flow":["splash","countdown","run","jump","obstacle","score","hall-of-fame"],"asset_policy":"original"}
+  ],
+  "multiplayer": {"transport":"adapter-defined","presence":"consent-based","raw_ip_storage":false,"exact_location_inference":false},
+  "wallet_boundary": "wallet-provider-only; private keys and recovery phrases never enter game state"
+}
