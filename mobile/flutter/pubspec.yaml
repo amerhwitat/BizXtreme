@@ -1,0 +1,17 @@
+name: bizxtreme_mobile
+publish_to: 'none'
+description: BizXtreme mobile game launcher and wallet-aware platform shell.
+version: 0.1.0
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flame: ^1.37.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
