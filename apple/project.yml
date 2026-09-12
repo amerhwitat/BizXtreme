@@ -1,0 +1,23 @@
+name: BizXtremeApple
+options:
+  bundleIdPrefix: com.amerhwitat
+  deploymentTarget:
+    iOS: "17.0"
+    macOS: "14.0"
+targets:
+  BizXtremeApple:
+    type: application
+    platform: iOS
+    sources: [Sources]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.amerhwitat.bizxtreme
+        GENERATE_INFOPLIST_FILE: YES
+  BizXtremeMac:
+    type: application
+    platform: macOS
+    sources: [Sources]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.amerhwitat.bizxtreme.mac
+        GENERATE_INFOPLIST_FILE: YES
