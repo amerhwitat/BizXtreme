@@ -1,0 +1,11 @@
+{
+  "catalog_version": 1,
+  "policy": "license-gated",
+  "storyboards": [
+    {"id":"basic-2d-platformer","dimensions":"2D","license":"CC0-or-compatible","source":"Flutter Casual Games Toolkit"},
+    {"id":"card-game","dimensions":"2D","license":"source-license-required","source":"Flutter Casual Games Toolkit"},
+    {"id":"3d-world-template","dimensions":"3D","license":"source-license-required","source":"engine-adapter-template"},
+    {"id":"timeline-world","dimensions":"4D","license":"source-license-required","source":"BizXtreme storyboard schema"}
+  ],
+  "rule": "Only download/import assets after verifying the individual asset license and terms."
+}
