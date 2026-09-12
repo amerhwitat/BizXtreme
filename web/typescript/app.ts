@@ -1,0 +1,1 @@
+export type Expedition={progress:number;xp:number};export const advance=(x:Expedition):Expedition=>({progress:Math.min(100,x.progress+10),xp:x.xp+5});
