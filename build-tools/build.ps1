@@ -1,0 +1,1 @@
+$ErrorActionPreference='Stop'; $root=Split-Path -Parent (Split-Path -Parent $MyInvocation.MyCommand.Path); $p=Get-Command python -ErrorAction SilentlyContinue; if(-not $p){throw 'Python 3 is required'}; & $p.Source (Join-Path $root 'build-tools/build.py') @args; exit $LASTEXITCODE
