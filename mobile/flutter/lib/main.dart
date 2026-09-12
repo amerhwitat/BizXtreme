@@ -1,28 +1,13 @@
 import 'package:flutter/material.dart';
-
-void main() => runApp(const BizXtremeApp());
-
-class BizXtremeApp extends StatelessWidget {
-  const BizXtremeApp({super.key});
-  @override
-  Widget build(BuildContext context) => MaterialApp(
-    title: 'BizXtreme',
-    home: Scaffold(
-      appBar: AppBar(title: const Text('BizXtreme Game Hub')),
-      body: ListView(children: [
-        _item(context, '2D Storyboard Adventure', '2D'),
-        _item(context, '3D World Builder', '3D'),
-        _item(context, '4D Timeline Quest', '4D'),
-        _item(context, 'Wallet Setup & Backup', 'Wallet'),
-        _item(context, 'Snapshots & Saves', 'Saves'),
-        _item(context, 'Hall of Fame', 'Scores'),
-        _item(context, 'Friends / Peer Presence', 'Network'),
-        _item(context, 'Free & Low-Cost Store', 'Store'),
-      ]),
-    ),
-  );
-  static Widget _item(BuildContext c, String title, String tag) => ListTile(
-    title: Text(title), subtitle: Text(tag), trailing: const Icon(Icons.play_arrow),
-    onTap: () => ScaffoldMessenger.of(c).showSnackBar(SnackBar(content: Text('$title selected'))),
-  );
-}
+import 'games/card_games.dart';
+import 'games/trex_game.dart';
+void main()=>runApp(const BizXtremeApp());
+class BizXtremeApp extends StatelessWidget{const BizXtremeApp({super.key});@override Widget build(BuildContext c)=>MaterialApp(title:'BizXtreme',theme:ThemeData.dark(useMaterial3:true),home:const SplashGate());}
+class SplashGate extends StatefulWidget{const SplashGate({super.key});@override State<SplashGate> createState()=>_SplashGateState();}
+class _SplashGateState extends State<SplashGate>{@override void initState(){super.initState();Future.delayed(const Duration(milliseconds:1200),(){if(mounted)Navigator.pushReplacement(context,MaterialPageRoute(builder:(_)=>const GameHubPage()));});}@override Widget build(BuildContext c)=>const Scaffold(body:Center(child:Column(mainAxisSize:MainAxisSize.min,children:[Icon(Icons.style,size:100),SizedBox(height:18),Text('BIZXTREME',style:TextStyle(fontSize:48,fontWeight:FontWeight.w700)),Text('POKER • CARDS • T-REX')])));}
+class GameHubPage extends StatelessWidget{const GameHubPage({super.key});@override Widget build(BuildContext c)=>Scaffold(appBar:AppBar(title:const Text('BizXtreme Game Hub')),body:ListView(padding:const EdgeInsets.all(16),children:[const Text('Featured Games',style:TextStyle(fontSize:26,fontWeight:FontWeight.bold)),_tile(c,'Texas Hold’em Poker','AI opponents or online multiplayer',Icons.casino,()=>Navigator.push(c,MaterialPageRoute(builder:(_)=>const CardGamePage('Texas Hold’em Poker')))),_tile(c,'Blackjack','Dealer AI and online-ready table',Icons.credit_card,()=>Navigator.push(c,MaterialPageRoute(builder:(_)=>const CardGamePage('Blackjack')))),_tile(c,'Classic Card Suite','Klondike • FreeCell • Hearts • Spades • Crazy Eights • War',Icons.layers,()=>Navigator.push(c,MaterialPageRoute(builder:(_)=>const CardGamePage('Classic Card Suite')))),_tile(c,'T-Rex Runner','Arcade runner and high-score mode',Icons.directions_run,()=>Navigator.push(c,MaterialPageRoute(builder:(_)=>const TrexPage()))),const Divider(height:32),_tile(c,'2D Storyboard Adventure','Storyboard catalog',Icons.auto_stories,()=>_notice(c,'2D Storyboard Adventure')),_tile(c,'3D World Builder','Realtime world',Icons.threed_rotation,()=>_notice(c,'3D World Builder')),_tile(c,'4D Timeline Quest','Time-indexed world',Icons.timeline,()=>_notice(c,'4D Timeline Quest')),_tile(c,'Wallet Setup & Backup','Wallet-provider boundary',Icons.account_balance_wallet,()=>_notice(c,'Wallet setup')),_tile(c,'Snapshots & Saves','Progress and high scores',Icons.save,()=>_notice(c,'Snapshots & Saves')),_tile(c,'Hall of Fame','Local and opt-in online leaderboard',Icons.emoji_events,()=>_notice(c,'Hall of Fame')),_tile(c,'Friends / Peer Presence','Consent-based connected status',Icons.people,()=>_notice(c,'Peer presence')),_tile(c,'Free & Low-Cost Store','License-gated content catalog',Icons.store,()=>_notice(c,'Store'))]));static Widget _tile(BuildContext c,String t,String s,IconData i,VoidCallback go)=>Card(child:ListTile(leading:Icon(i,size:32),title:Text(t),subtitle:Text(s),trailing:const Icon(Icons.chevron_right),onTap:go));static void _notice(BuildContext c,String s)=>ScaffoldMessenger.of(c).showSnackBar(SnackBar(content:Text('$s selected')));}
+class CardGamePage extends StatefulWidget{final String game;const CardGamePage(this.game,{super.key});@override State<CardGamePage> createState()=>_CardGamePageState();}
+class _CardGamePageState extends State<CardGamePage>{final poker=PokerRound();final blackjack=BlackjackRound();bool multiplayer=false;String status='Ready';@override void initState(){super.initState();_deal();}void _deal(){setState((){if(widget.game.contains('Poker')){poker.deal();status='Pre-flop';}else{blackjack.deal();status='Deal complete';}});}@override Widget build(BuildContext c){final cards=widget.game.contains('Poker')?poker.player:blackjack.player;final table=widget.game.contains('Poker')?poker.community:blackjack.dealer;return Scaffold(appBar:AppBar(title:Text(widget.game)),body:Padding(padding:const EdgeInsets.all(16),child:Column(children:[Row(children:[const Text('Mode'),Switch(value:multiplayer,onChanged:(v)=>setState(()=>multiplayer=v)),Text(multiplayer?'Online multiplayer':'Single player')]),Text(status,style:const TextStyle(fontSize:20,fontWeight:FontWeight.bold)),const SizedBox(height:12),Wrap(spacing:8,children:table.map(_card).toList()),const Spacer(),const Text('Your hand',style:TextStyle(fontSize:18)),Wrap(spacing:8,children:cards.map(_card).toList()),const Spacer(),Row(mainAxisAlignment:MainAxisAlignment.center,children:[ElevatedButton(onPressed:_deal,child:const Text('New Deal')),const SizedBox(width:12),ElevatedButton(onPressed:(){setState((){if(widget.game.contains('Poker')){if(poker.community.length==3){poker.turn();status='Turn';}else if(poker.community.length==4){poker.river();status='River';}}else status='Player action ready';});},child:Text(widget.game.contains('Poker')?'Next Street':'Hit / Action'))])])));}
+Widget _card(PlayingCard x)=>Container(width:62,height:88,alignment:Alignment.center,decoration:BoxDecoration(color:Colors.white,borderRadius:BorderRadius.circular(9),boxShadow:const [BoxShadow(blurRadius:4)]),child:Text(x.label,style:TextStyle(color:x.red?Colors.red:Colors.black,fontSize:20,fontWeight:FontWeight.bold)));}
+class TrexPage extends StatefulWidget{const TrexPage({super.key});@override State<TrexPage> createState()=>_TrexPageState();}
+class _TrexPageState extends State<TrexPage>{final state=TrexState();@override Widget build(BuildContext c)=>Scaffold(appBar:AppBar(title:const Text('T-Rex Runner')),body:GestureDetector(onTap:(){setState(()=>state.jump());},child:Center(child:Column(mainAxisAlignment:MainAxisAlignment.center,children:[const Icon(Icons.nightlight_round,size:90),const SizedBox(height:20),Text('SCORE ${state.score}',style:const TextStyle(fontSize:32,fontWeight:FontWeight.bold)),const SizedBox(height:20),const Text('Tap to jump • avoid cactus and birds'),const SizedBox(height:20),ElevatedButton(onPressed:(){setState(()=>state.reset());},child:const Text('Restart'))]))));}
