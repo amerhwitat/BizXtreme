@@ -15,8 +15,17 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 - `Assets/` — existing Unity/C# application assets and packaged resources.
 - `threejs/` — existing Three.js implementation.
 - `docs/` — language-neutral architecture and integration documentation.
+- `chimera/` — shared 128D/P2P interoperability contracts.
 
 Source implementations are separated by programming language. The new native VC++ and WPF desktop applications are independent source trees and do not mix C++ and C# implementation files.
+
+## Chimera multidimensional integration
+
+BizXtreme uses the Chimera multidimensional application-state model: geometry, time, observer/perspective, light/material response, events, objects, properties, interactions, and extensible cognitive/vector state. The 128D base can be extended without changing the interoperability envelope.
+
+## Peer-to-peer integration
+
+`chimera/p2p_protocol.json` defines authenticated peer identity, capability exchange, request/response and publish/subscribe, sequence/replay controls, content-addressed synchronization, and local-first operation. Discovery is limited to configured/bootstrap peers; arbitrary Internet scanning is not part of the application protocol.
 
 ## Standalone Windows desktop editions
 
@@ -44,5 +53,9 @@ See [`docs/DESKTOP_CPP_AND_DOTNET.md`](docs/DESKTOP_CPP_AND_DOTNET.md).
 | Browser JavaScript | `javascript/` / `web/` |
 | TypeScript | `typescript/` |
 | Unity/C# | `Assets/` |
+
+## License
+
+Released under the GNU General Public License v3 or later for original project code. Existing third-party components retain their original licenses; see their notices. See `LICENSE` where provided.
 
 The new desktop applications complement rather than replace the existing implementations.
