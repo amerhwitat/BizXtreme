@@ -13,6 +13,8 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 | Realtime rendering | [rendering/](rendering/) |
 | Multi-chain crypto | [crypto/](crypto/) |
 | Game/store/storyboards | [game-store/](game-store/) |
+| Card games & T-Rex | [docs/CARD_GAMES_AND_TREX.md](docs/CARD_GAMES_AND_TREX.md) |
+| Public release landing page | [docs/index.md](docs/index.md) |
 | Kotlin mobile | [mobile/kotlin/](mobile/kotlin/) |
 | Flutter mobile | [mobile/flutter/](mobile/flutter/) |
 | P2P/presence policy | [network/](network/) |
@@ -29,21 +31,25 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 
 ## Mobile game hub
 
-Kotlin Multiplatform and Flutter shells now provide a common starting menu for 2D storyboard games, 3D worlds, 4D time-indexed worlds, wallet setup, secure backup/snapshot hooks, saves, hall of fame, store content and opt-in peer presence.
+The main menu now includes Texas Hold’em Poker, Blackjack, a Classic Card Suite (Klondike, FreeCell, Hearts, Spades, Crazy Eights and War), and an original T-Rex Runner alongside the existing 2D/3D/4D worlds, wallet, saves, Hall of Fame, store and peer-presence features.
 
-Flutter's official Games Toolkit provides open-source multiplatform 2D templates and Flame provides a modular Flutter game engine for mobile, desktop and web. Kotlin Multiplatform supports shared Android/iOS logic and Compose Multiplatform UI.
+Flutter's official Games Toolkit provides a card-game template with game-state management and multiplayer hooks; Flame provides the real-time 2D game-loop model. Kotlin Multiplatform supports shared Android/iOS logic. These sources informed architecture; third-party code was not copied.
+
+## Artwork and game flow
+
+Original vector splash and card-table artwork lives under `mobile/flutter/assets/art/`. Game flow metadata lives in `game-store/storyboards/card-games-and-trex.json`. Card rendering is data-driven from a standard deck model.
 
 ## Wallets, saves and snapshots
 
-Wallet secrets are isolated from gameplay. Recovery phrases/private keys must stay in platform secure storage or a user-controlled wallet provider and never be copied into saves, logs, screenshots, telemetry or peer traffic. Backup manifests describe state without containing secret material.
+Wallet secrets are isolated from gameplay. Recovery phrases/private keys must stay in platform secure storage or a user-controlled wallet provider and never be copied into saves, logs, screenshots, telemetry or peer traffic.
 
 ## P2P/presence
 
-Presence is consent-based. The client uses a random peer ID and can display live connected/disconnected state. Raw IP addresses are not exposed to other users or stored in player profiles. Exact location is not inferred from IP; an optional coarse region can be self-selected.
+Presence is consent-based. The client uses a random peer ID and can display live connected/disconnected state. Raw IP addresses are not exposed to other users or stored in player profiles. Exact location is not inferred from IP.
 
-## Storyboards and store
+## Public release
 
-`game-store/storyboards/` contains license-gated templates for 2D/3D/4D implementations. Public accessibility is not treated as a reuse license. Imports preserve source, license, attribution and integrity metadata.
+`docs/index.md` is the public project landing page source and `.github/workflows/publish-docs.yml` can publish it through GitHub Pages when Pages is enabled for the repository.
 
 ## External documentation citations
 
@@ -51,11 +57,11 @@ Presence is consent-based. The client uses a random peer ID and can display live
 - Flutter Games Toolkit: https://docs.flutter.dev/resources/games-toolkit
 - Flame: https://github.com/flame-engine/flame
 - Kotlin Multiplatform: https://kotlinlang.org/docs/multiplatform.html
-- Android Kotlin Multiplatform: https://developer.android.com/kotlin/multiplatform
+- Texas Hold’em rules: https://bicyclecards.com/how-to-play/texas-holdem-poker
+- Blackjack rules: https://bicyclecards.com/how-to-play/blackjack/
 - Tether WDK: https://wdk.tether.io/
 - WalletConnect Specifications: https://github.com/WalletConnect/walletconnect-specs
 - Wallet Standard: https://github.com/wallet-standard/wallet-standard
-- Uniswap Smart Order Router: https://github.com/Uniswap/smart-order-router
 - OpenGameArt: https://opengameart.org/
 - Poly Haven license: https://polyhaven.com/license
 - Poly Haven API: https://api.polyhaven.com/
