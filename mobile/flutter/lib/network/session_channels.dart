@@ -1,0 +1,3 @@
+import 'game_session.dart';
+class ChatMessage { ChatMessage({required this.id, required this.playerId, required this.text, required this.sentAt}); final String id; final String playerId; final String text; final DateTime sentAt; }
+class SessionChannels { bool chatEnabled = true; bool voiceEnabled = true; bool microphoneMuted = true; bool speakerMuted = false; final List<ChatMessage> chat = []; void addChat(ChatMessage message) { if (chatEnabled) chat.add(message); } void setChannel(SessionChannel channel, bool enabled) { if (channel == SessionChannel.chat) chatEnabled = enabled; if (channel == SessionChannel.voice) voiceEnabled = enabled; } }
