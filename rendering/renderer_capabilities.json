@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "renderers": [
+    {"name":"Unity","language":"C#","realtime":true},
+    {"name":"Godot4","language":"GDScript/C++","realtime":true},
+    {"name":"OGRE","language":"C++","realtime":true},
+    {"name":"Bevy","language":"Rust","realtime":true},
+    {"name":"bgfx","language":"C++","realtime":true},
+    {"name":"Filament","language":"C++","realtime":true},
+    {"name":"Three.js","language":"JavaScript/TypeScript","realtime":true}
+  ],
+  "asset_formats": ["glb","gltf","obj","fbx","png","jpg","webp","hdr","exr"],
+  "material_models": ["unlit","pbr","metallic_roughness"],
+  "lighting": ["ibl","directional","point","spot","shadows","hdr"]
+}
