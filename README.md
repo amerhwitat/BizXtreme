@@ -2,6 +2,26 @@
 
 BizXtreme is the extended BizX application/game repository, including WebGL/Three.js, Unity/C#, wallet, crypto, game, Aurora, Chimera integration and Kotlin mobile material.
 
+## Source-code citation index
+
+| Area | Source |
+|---|---|
+| Windows Visual C++ | [desktop/vcpp/](desktop/vcpp/) |
+| Windows C# / WPF | [desktop/dotnet/](desktop/dotnet/) |
+| Node.js | [nodejs/](nodejs/) |
+| Java | [java/](java/) |
+| Python | [python/](python/) |
+| JavaScript | [javascript/](javascript/) |
+| TypeScript | [typescript/](typescript/) |
+| Web | [web/](web/) |
+| Three.js/WebGL | [threejs/](threejs/) |
+| Unity/C# | [Assets/](Assets/) |
+| Kotlin mobile | [kotlin/mobile/](kotlin/mobile/) |
+| Apple/Swift | [apple/](apple/) |
+| Chimera integration | [chimera/](chimera/) |
+| Aurora integration | [aurora_integration.json](aurora_integration.json) |
+| Documentation | [docs/](docs/) |
+
 ## Language-separated implementations
 
 - `desktop/vcpp/` — standalone native Visual C++ Windows desktop implementation.
