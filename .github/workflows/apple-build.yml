@@ -1,0 +1,13 @@
+name: Apple build
+on:
+  workflow_dispatch:
+  push:
+    paths: ['apple/**']
+jobs:
+  validate:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: brew install xcodegen
+      - run: xcodegen generate --spec apple/project.yml
+      - run: xcodebuild -project apple/BizXtremeApple.xcodeproj -scheme BizXtremeApple -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
