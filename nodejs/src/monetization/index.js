@@ -1,3 +1,11 @@
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const CONFIG_PATH = fileURLToPath(new URL('../../../../games/payment-config/payment-config.json', import.meta.url));
+const PAYMENT_CONFIG = JSON.parse(readFileSync(CONFIG_PATH, 'utf8'));
+export const PAYMENT_ROUTING = Object.freeze(PAYMENT_CONFIG.paymentRouting);
+
 export const PRODUCTS = Object.freeze({
   starter_pack: { type: 'consumable', price: 0.99 },
   builder_pack: { type: 'consumable', price: 4.99 },
@@ -12,7 +20,20 @@ export class MonetizationEngine {
     if (!product) return { ok: false, reason: 'unknown-product' };
     this.events.push({ type: 'purchase', productId, provider, amount: product.price, testMode: this.testMode });
     if (product.type !== 'consumable') this.entitlements.add(productId);
-    return { ok: true, productId, provider, amount: product.price, status: 'verification-required' };
+    return {
+      ok: true,
+      productId,
+      provider,
+      amount: product.price,
+      status: 'verification-required',
+      paymentMethods: {
+        ethereum: { recipient: PAYMENT_ROUTING.primaryEthAddress, asset: 'ETH' },
+        paypal: { account: PAYMENT_ROUTING.primaryPayPalAccount }
+      },
+      defaultPaymentMethod: PAYMENT_ROUTING.defaultMethod,
+      fallbackPaymentMethod: PAYMENT_ROUTING.fallbackMethod,
+      requiresExplicitUserSelection: PAYMENT_ROUTING.routingRequiresExplicitUserSelection
+    };
   }
   recordAdImpression(placement, provider) {
     if (!AD_PLACEMENTS.includes(placement)) return { ok: false, reason: 'unknown-placement' };
