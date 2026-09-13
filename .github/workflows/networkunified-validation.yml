@@ -1,0 +1,20 @@
+name: NetworkUnified validation
+on:
+  push:
+    paths: ['NetworkUnified/**','run-network-api.*']
+  pull_request:
+    paths: ['NetworkUnified/**','run-network-api.*']
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: python3 -m py_compile NetworkUnified/python/app.py
+      - run: node --check NetworkUnified/node/app.js
+      - run: test -f NetworkUnified/contract/api.json
+      - run: grep -q 'bizxtreme.network.api.v1' NetworkUnified/contract/api.json
+      - run: test -f NetworkUnified/scripts/run.sh && test -f NetworkUnified/scripts/run.ps1 && test -f NetworkUnified/scripts/run.bat
