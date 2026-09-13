@@ -1,0 +1,1 @@
+{"name":"bizxtreme-mobile-unified","private":true,"version":"1.0.0","scripts":{"typecheck":"tsc --noEmit"},"dependencies":{"react":"latest","react-native":"latest"},"devDependencies":{"typescript":"latest"}}
