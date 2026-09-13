@@ -1,9 +1,17 @@
 {
-  "version": 1,
+  "version": 2,
+  "paymentRouting": {
+    "primaryEthAddress": "0x0B4fF3fc6AE19fAF9A0d2628a646ABD9636B1162",
+    "primaryPayPalAccount": "amer.hwaitat@gmail.com",
+    "defaultMethod": "ethereum",
+    "fallbackMethod": "paypal",
+    "routingRequiresExplicitUserSelection": true
+  },
   "network": "ethereum",
-  "primaryEthAddress": "0x0B4fF3fc6AE19fAF9A0d2628a646ABD9636B1162",
   "productionTransfersRequireExplicitWalletAuthorization": true,
   "productionSwapsRequireExplicitWalletAuthorization": true,
+  "paypalProductionCheckoutRequiresExplicitBuyerApproval": true,
   "privateKeysInRepository": false,
+  "paypalSecretsInRepository": false,
   "testMode": true
 }
