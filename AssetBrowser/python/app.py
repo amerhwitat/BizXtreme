@@ -6,19 +6,27 @@ PORT=int(os.getenv('ASSET_BROWSER_PORT','8790')); STORE=pathlib.Path(os.getenv('
 SAFE_EXT={'.png','.jpg','.jpeg','.webp','.gif','.wav','.ogg','.mp3','.flac','.glb','.gltf','.obj','.mtl','.hdr','.exr','.ttf','.otf','.json','.txt','.zip'}
 def get(u):
  r=urllib.request.Request(u,headers={'User-Agent':UA})
- with urllib.request.urlopen(r,timeout=12) as x:return x.read()
+ with urllib.request.urlopen(r,timeout=15) as x:return x.read()
 def ok(u,p):return urlparse(u).scheme=='https' and urlparse(u).hostname in PROVIDERS[p]['download_hosts']
 def mf():
  try:return json.loads(MANIFEST.read_text())
  except:return []
 def save(x):MANIFEST.write_text(json.dumps(x,indent=2,ensure_ascii=False))
+def first_url(x):
+ if isinstance(x,dict):
+  if isinstance(x.get('url'),str):return x['url']
+  for v in x.values():
+   u=first_url(v)
+   if u:return u
+ return None
 def search(p,q,k):
  if p=='openverse':
   b=PROVIDERS[p]['search_audio' if k=='audio' else 'search_image']; d=json.loads(get(b+'?'+urllib.parse.urlencode({'q':q,'page_size':24})));return [{'id':x.get('id'),'title':x.get('title'),'provider':'Openverse','type':k,'license':x.get('license'),'license_url':x.get('license_url'),'creator':x.get('creator'),'source':x.get('foreign_landing_url') or x.get('url'),'preview':x.get('thumbnail') or x.get('url'),'download':x.get('url')} for x in d.get('results',[])]
  if p=='polyhaven':
   d=json.loads(get(PROVIDERS[p]['assets'])); q=q.lower(); o=[]
   for i,x in d.items():
-   if not q or q in (i+' '+str(x)).lower():o.append({'id':i,'title':x.get('name',i),'provider':'Poly Haven','type':x.get('type','asset'),'license':'CC0','license_url':'https://polyhaven.com/license','source':'https://polyhaven.com/a/'+i,'preview':None,'download':None})
+   if not q or q in (i+' '+str(x)).lower():
+    files=json.loads(get(PROVIDERS[p]['files']+urllib.parse.quote(i,safe='')));u=first_url(files);o.append({'id':i,'title':x.get('name',i),'provider':'Poly Haven','type':{0:'hdri',1:'texture',2:'model'}.get(x.get('type'),'asset'),'license':'CC0','license_url':'https://polyhaven.com/license','source':'https://polyhaven.com/a/'+i,'preview':x.get('thumbnail_url'),'download':u})
    if len(o)>=24:break
   return o
  if p=='kenney':return [{'id':'kenney-catalog','title':'Kenney official CC0 asset catalog','provider':'Kenney','type':'catalog','license':'CC0','license_url':'https://kenney.nl/support','source':'https://kenney.nl/assets','preview':None,'download':None}]
@@ -51,7 +59,7 @@ class H(http.server.BaseHTTPRequestHandler):
   import datetime;rec={'file':str(dest.relative_to(STORE)),'sha256':sha,'bytes':len(data),'provider':pr,'source':d.get('source'),'license':d.get('license'),'license_url':d.get('license_url'),'downloaded_at':datetime.datetime.now(datetime.timezone.utc).isoformat()};m=mf();m.append(rec);save(m);return self.j(rec)
  def file(self,p,c=None):
   try:b=p.read_bytes();self.send_response(200);self.send_header('Content-Type',c or mimetypes.guess_type(str(p))[0] or 'application/octet-stream');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
-  except:return self.j({'error':'not_found'},404)
+  except:self.j({'error':'not_found'},404)
  def log_message(self,*a):pass
 print(f'BizXtreme Asset Browser: http://127.0.0.1:{PORT}')
 http.server.ThreadingHTTPServer(('127.0.0.1',PORT),H).serve_forever()
