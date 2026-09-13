@@ -1,6 +1,5 @@
-"""Run BizXtreme with: python -m bizxtreme [tycoon]"""
+"""GUI-first package entry point; the engine remains available programmatically."""
 
-import sys
-from .game_launcher import main
+from .gui import main
 
-raise SystemExit(main(sys.argv[1] if len(sys.argv) > 1 else "default"))
+raise SystemExit(main())
