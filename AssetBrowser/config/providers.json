@@ -1,0 +1,5 @@
+{
+  "openverse": {"search_image":"https://api.openverse.org/v1/images/", "search_audio":"https://api.openverse.org/v1/audio/", "download_hosts":["openverse.org","wordpress.org","wikimedia.org","flickr.com","images.unsplash.com"]},
+  "polyhaven": {"assets":"https://api.polyhaven.com/assets", "download_hosts":["polyhaven.com","api.polyhaven.com"]},
+  "kenney": {"catalog":"https://kenney.nl/assets", "download_hosts":["kenney.nl"]}
+}
