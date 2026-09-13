@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "network": "ethereum",
+  "primaryEthAddress": "0x0B4fF3fc6AE19fAF9A0d2628a646ABD9636B1162",
+  "productionTransfersRequireExplicitWalletAuthorization": true,
+  "productionSwapsRequireExplicitWalletAuthorization": true,
+  "privateKeysInRepository": false,
+  "testMode": true
+}
