@@ -1,0 +1,6 @@
+[CmdletBinding()]param()
+$ErrorActionPreference='Continue';$Root=Split-Path -Parent $PSScriptRoot;$fail=0
+'node','npm','python','cargo','go','java','mvn','gradle','dotnet','cmake','swift','dart','composer','bundle' | % {if(-not(Get-Command $_ -ErrorAction SilentlyContinue)){Write-Warning "Missing tool: $_"}}
+$files=Get-ChildItem $Root -Recurse -File | Where-Object {$_.FullName -notmatch '\\(\.git|node_modules|target|build|bin|obj|\.venv)\\'}
+foreach($f in $files){$d=$f.DirectoryName;switch($f.Name){'package.json'{Push-Location $d;if(Test-Path package-lock.json){npm ci}else{npm install};Pop-Location};'requirements.txt'{Push-Location $d;python -m pip install -r requirements.txt;Pop-Location};'pyproject.toml'{Push-Location $d;python -m pip install -e .;Pop-Location};'Cargo.toml'{Push-Location $d;cargo fetch;Pop-Location};'go.mod'{Push-Location $d;go mod download;Pop-Location};'pom.xml'{Push-Location $d;mvn -B dependency:go-offline;Pop-Location};'Package.swift'{Push-Location $d;swift package resolve;Pop-Location};'pubspec.yaml'{Push-Location $d;dart pub get;Pop-Location};'composer.json'{Push-Location $d;composer install --no-interaction --prefer-dist;Pop-Location};'Gemfile'{Push-Location $d;bundle install;Pop-Location}}}
+Write-Host 'Dependency bootstrap complete.';exit $fail

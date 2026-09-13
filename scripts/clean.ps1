@@ -1,0 +1,1 @@
+$Root=Split-Path -Parent $PSScriptRoot;$names=@('node_modules','target','build','bin','obj','.venv','__pycache__');Get-ChildItem $Root -Recurse -Directory -Force|Where-Object{$names -contains $_.Name}|Sort-Object FullName -Descending|%{Remove-Item $_.FullName -Recurse -Force -ErrorAction SilentlyContinue};Write-Host 'Clean complete.'
