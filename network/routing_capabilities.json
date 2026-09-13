@@ -1,0 +1,7 @@
+{
+  "address_families": ["ipv4", "ipv6", "dual-stack"],
+  "routing": ["static", "connected", "rip", "ripng", "ospfv2", "ospfv3", "isis", "bgp4", "eigrp-adapter", "babel", "bfd", "vrrp", "pim", "openfabric", "bgp-ls"],
+  "sdn": ["openflow", "p4runtime", "netconf", "restconf", "gnmi", "envoy-xds"],
+  "transport": ["tcp", "udp", "quic", "websocket", "webrtc", "webtransport"],
+  "defaults": {"dynamic_routing": false, "host_route_mutation": false, "dual_stack": true}
+}
