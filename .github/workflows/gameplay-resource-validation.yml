@@ -14,7 +14,7 @@ jobs:
       - name: Validate Node.js resource system
         run: node nodejs/src/game/survival/index.test.js
       - name: Validate Python resource system
-        run: python python/bizxtreme/game/survival/test_resources.py
+        run: PYTHONPATH=python python python/bizxtreme/game/survival/test_resources.py
       - name: Validate Java resource system
         shell: bash
         run: |
