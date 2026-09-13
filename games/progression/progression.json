@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "save": {"enabled": true, "autosaveSeconds": 30, "saveLevel": true, "saveStatus": true, "saveHealthAmmo": true, "resume": true},
+  "hallOfFame": {"enabled": true, "threshold": 1000, "entriesPerGame": 100, "requirePlayerName": true, "sort": "score-desc"},
+  "onboarding": {"rulesBeforeStart": true, "trainingBeforeStart": true, "trainingSkippable": true},
+  "mobile": {"enabled": true, "safeAreas": true, "touchTargetsMinPx": 44, "leftMovement": true, "rightActions": true, "pauseButton": true, "hapticFeedback": true, "orientation": "adaptive"}
+}
