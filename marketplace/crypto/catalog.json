@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "currency_policy": "fiat-denominated-settlement",
+  "crypto_required": false,
+  "items": [
+    {"asset_id":"free-training-skin","free":true,"fiat_price_minor":0,"currency":"USD","accepted_payment_methods":["free"],"license":"original","entitlement_policy":"permanent"},
+    {"asset_id":"starter-camo-pack","free":false,"fiat_price_minor":49,"currency":"USD","accepted_payment_methods":["crypto_testnet","crypto_mainnet_provider"],"license":"original","entitlement_policy":"permanent"},
+    {"asset_id":"standard-vfx-pack","free":false,"fiat_price_minor":99,"currency":"USD","accepted_payment_methods":["crypto_testnet","crypto_mainnet_provider"],"license":"original","entitlement_policy":"permanent"},
+    {"asset_id":"premium-map-pack","free":false,"fiat_price_minor":299,"currency":"USD","accepted_payment_methods":["crypto_testnet","crypto_mainnet_provider"],"license":"original","entitlement_policy":"permanent"}
+  ]
+}
