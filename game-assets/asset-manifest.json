@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "policy": "prefer-cc0",
+  "mapFamilies": ["alpine","desert","mediterranean","forest","tropical","coast","island","river-valley","mountain","volcanic","snowy","grassland","farmland","industrial-city","modern-city","harbor","ancient-ruins","fantasy","space-colony","retro-rpg"],
+  "realisticSources": [
+    {"name":"Poly Haven","license":"CC0","url":"https://polyhaven.com/"},
+    {"name":"180+ Seamless Hex Tiles","license":"CC0","url":"https://opengameart.org/content/180-seamless-hex-tiles"},
+    {"name":"Open World Tileset","license":"CC0","url":"https://opengameart.org/content/open-world-tileset"}
+  ],
+  "nostalgicSources": [
+    {"name":"Kenney Map Pack","license":"CC0","url":"https://opengameart.org/content/map-pack-180-assets"},
+    {"name":"Kenney Cartography Pack","license":"CC0","url":"https://opengameart.org/content/cartography-pack"},
+    {"name":"Kenney Minimap Pack","license":"CC0","url":"https://opengameart.org/content/minimap-pack"},
+    {"name":"Puny World Tileset","license":"CC0","url":"https://opengameart.org/content/16x16-puny-world-tileset"}
+  ],
+  "audioSources": [
+    {"name":"Kenney 50 RPG Sound Effects","license":"CC0","url":"https://opengameart.org/content/50-rpg-sound-effects"},
+    {"name":"OwlishMedia Sound Effects Pack","license":"CC0","url":"https://opengameart.org/node/86682"},
+    {"name":"The Shop Free SFX","license":"CC0","url":"https://opengameart.org/content/the-shop"}
+  ],
+  "vfxSources": [
+    {"name":"70 Animated 2D Game Effects","license":"CC0","url":"https://opengameart.org/content/70-animated-2d-game-effects"},
+    {"name":"Lots of Game Effects","license":"CC0","url":"https://opengameart.org/content/lots-of-game-effects"},
+    {"name":"PVFX Foundry","license":"CC0","url":"https://nerijs.itch.io/pvfx-foundry"}
+  ],
+  "integration": {"sourceOnly":true,"bundleAfterLicenseReview":true,"generateFinalMapsFromLicensedTiles":true,"preserveAttributionFiles":true}
+}
