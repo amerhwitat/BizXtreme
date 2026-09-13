@@ -1,0 +1,8 @@
+{
+  "schema": "bizxtreme.mobile.game.v1",
+  "application": "BizXtreme",
+  "modes": ["default", "tycoon", "sandbox", "multiplayer"],
+  "economy": {"asset": "BIZ", "virtual": true, "settlement": "external-authorized-only"},
+  "state": {"cash": 10000, "level": 1, "score": 0, "network": "offline"},
+  "adapters": ["android-kotlin", "ios-swift", "flutter-dart", "react-native-typescript"]
+}
