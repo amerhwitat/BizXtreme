@@ -1,12 +1,15 @@
-from bizxtreme.monetization import MonetizationEngine
-PRIMARY_ETH_ADDRESS = "0x0B4fF3fc6AE19fAF9A0d2628a646ABD9636B1162"
+from bizxtreme.monetization import MonetizationEngine, PAYMENT_ROUTING
+
+PRIMARY_ETH_ADDRESS = PAYMENT_ROUTING["primaryEthAddress"]
+PRIMARY_PAYPAL_ACCOUNT = PAYMENT_ROUTING["primaryPayPalAccount"]
 BUSINESSES = {"bakery": {"name": "Bakery", "revenue": 900, "costs": 300}, "market": {"name": "Market", "revenue": 1500, "costs": 650}, "factory": {"name": "Factory", "revenue": 2600, "costs": 1200}}
+
 class TycoonGame:
     def __init__(self, cash=0, businesses=None, monetization=None): self.cash=cash; self.businesses=dict(businesses or {}); self.turn=0; self.monetization=MonetizationEngine(**(monetization or {}))
     def buy_business(self, business_type, price):
         if price<=0 or self.cash<price or business_type not in BUSINESSES: return {"ok":False,"reason":"invalid-purchase"}
         self.cash-=price; self.businesses[business_type]=self.businesses.get(business_type,0)+1
-        return {"ok":True,"business":business_type,"payment":{"asset":"ETH","recipient":PRIMARY_ETH_ADDRESS,"amount":price,"status":"wallet-authorization-required"}}
+        return {"ok":True,"business":business_type,"payment":{"asset":"ETH","recipient":PRIMARY_ETH_ADDRESS,"paypal_account":PRIMARY_PAYPAL_ACCOUNT,"amount":price,"status":"wallet-authorization-required"}}
     def purchase_pack(self, product_id, provider="store"): return self.monetization.purchase(product_id, provider)
     def record_ad(self, placement, provider="unityAds"): return self.monetization.record_ad_impression(placement, provider)
     def claim_rewarded_income(self, amount):
