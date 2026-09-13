@@ -1,0 +1,22 @@
+name: Validate progression mobile and Hall of Fame
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - name: Node progression tests
+        run: node --test nodejs/test/progression.test.js
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Python syntax validation
+        run: python -m py_compile python/bizxtreme/game/progression.py
+      - uses: actions/setup-java@v4
+        with: {distribution: temurin, java-version: '17'}
+      - name: Java progression compilation
+        run: javac java/src/main/java/io/amerhwitat/bizxtreme/game/ProgressionProfile.java
