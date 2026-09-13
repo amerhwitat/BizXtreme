@@ -1,0 +1,16 @@
+services:
+  app:
+    build: .
+    image: amerhwitat/bizxtreme:local
+    container_name: bizxtreme-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    volumes:
+      - bizxtreme-data:/app/data
+      - bizxtreme-logs:/app/logs
+    init: true
+volumes:
+  bizxtreme-data:
+  bizxtreme-logs:
