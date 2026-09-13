@@ -1,0 +1,18 @@
+name: Container
+
+on:
+  push:
+    paths: ['Dockerfile', '.dockerignore', 'docker/**', 'docker-compose.yml', '.github/workflows/container.yml']
+  pull_request:
+    paths: ['Dockerfile', '.dockerignore', 'docker/**', 'docker-compose.yml', '.github/workflows/container.yml']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Compose
+        run: docker compose config
+      - name: Build image
+        run: docker build --tag bizxtreme:ci .
