@@ -1,0 +1,2 @@
+# BizXtreme Python runtime uses the standard library.
+# Tkinter is provided by supported Python desktop distributions.
