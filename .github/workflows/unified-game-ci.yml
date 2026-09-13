@@ -1,0 +1,72 @@
+name: Unified Game CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  python-engine:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test runner
+        run: python -m pip install pytest
+      - name: Run shared engine tests
+        run: python -m pytest -q UnifiedGame/tests/python
+      - name: Validate launcher
+        run: python -m py_compile UnifiedGame/launcher/python/main.py
+      - name: Smoke test
+        run: python UnifiedGame/launcher/python/main.py --mode tycoon --cash 10000
+
+  node-typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate Node launcher
+        run: node --check UnifiedGame/launcher/node/index.js
+      - name: Validate TypeScript launcher source
+        run: node --check UnifiedGame/launcher/typescript/index.ts
+
+  native-runtimes:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: java
+            setup: |
+              sudo apt-get update
+              sudo apt-get install -y maven openjdk-17-jdk
+            command: mvn -q package -DskipTests -f UnifiedGame/launcher/java/pom.xml
+          - name: rust
+            setup: |
+              true
+            command: cargo build --release --manifest-path UnifiedGame/launcher/rust/Cargo.toml
+          - name: go
+            setup: |
+              true
+            command: go build ./UnifiedGame/launcher/go
+          - name: cpp
+            setup: |
+              true
+            command: cmake -S UnifiedGame/launcher/cpp -B UnifiedGame/launcher/cpp/build -DCMAKE_BUILD_TYPE=Release && cmake --build UnifiedGame/launcher/cpp/build
+          - name: dotnet
+            setup: |
+              true
+            command: dotnet build -c Release UnifiedGame/launcher/csharp/BizXtreme.UnifiedGame.csproj
+    name: Build ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup matrix dependency
+        run: ${{ matrix.setup }}
+      - name: Build
+        run: ${{ matrix.command }}
