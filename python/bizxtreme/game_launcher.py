@@ -1,14 +1,19 @@
-"""Single Python entry point for starting the BizXtreme game/application."""
+"""Single Python entry point for starting BizXtreme and Tycoon mode."""
 
 from .api import BizXtremeApi
+from .game.tycoon import TycoonGame
 
 
-def main() -> int:
+def main(mode: str = "default") -> int:
     api = BizXtremeApi()
     print("BizXtreme game starting")
     print(api.health())
+    if mode.lower() == "tycoon":
+        game = TycoonGame(cash=10_000)
+        print(f"BizXtreme Tycoon ready: cash={game.cash}")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    import sys
+    raise SystemExit(main(sys.argv[1] if len(sys.argv) > 1 else "default"))
