@@ -1,0 +1,37 @@
+name: BizXtreme repository validation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Reject private-key material
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -n -E -- '-----BEGIN (RSA|OPENSSH|EC|DSA|PRIVATE) KEY-----'; then
+            echo 'Private-key material detected in tracked source.' >&2
+            exit 1
+          fi
+
+      - name: Validate routing capability JSON
+        run: python -m json.tool network/routing_capabilities.json >/dev/null
+
+      - name: Validate networking documentation
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s network/ClientServerNetwork.md
+          test -s network/RoutingAndDistributedSystems.md
+          test -s SECURITY.md
