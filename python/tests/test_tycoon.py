@@ -1,11 +1,12 @@
 from bizxtreme.game.tycoon import TycoonGame
 
 
-def test_purchase_uses_primary_eth_recipient():
+def test_purchase_uses_configured_payment_routes():
     game = TycoonGame(cash=10_000)
     result = game.buy_business("bakery", 2_500)
     assert result["ok"] is True
     assert result["payment"]["recipient"] == "0x0B4fF3fc6AE19fAF9A0d2628a646ABD9636B1162"
+    assert result["payment"]["paypal_account"] == "amer.hwaitat@gmail.com"
     assert game.cash == 7_500
 
 
