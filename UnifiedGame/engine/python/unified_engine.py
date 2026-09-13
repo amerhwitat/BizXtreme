@@ -1,6 +1,26 @@
-"""Shared, dependency-light BizXtreme game state engine."""
+"""Shared, dependency-light BizXtreme game state and economy engine."""
 
 from dataclasses import dataclass, field
+
+
+@dataclass
+class Economy:
+    cash: float = 10000.0
+
+    def transact(self, revenue: float = 0.0, cost: float = 0.0) -> None:
+        self.cash += float(revenue) - float(cost)
+
+
+@dataclass
+class VirtualLedger:
+    """In-game asset ledger; it never handles private keys or real settlement."""
+
+    balances: dict[str, float] = field(default_factory=dict)
+
+    def mint(self, symbol: str, amount: float) -> None:
+        if amount < 0:
+            raise ValueError("amount must be non-negative")
+        self.balances[symbol] = self.balances.get(symbol, 0.0) + float(amount)
 
 
 @dataclass
