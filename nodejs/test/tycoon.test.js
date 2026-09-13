@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { TycoonGame } from '../src/game/tycoon/index.js';
 
-test('Tycoon purchase routes payment to the configured primary ETH address', () => {
+test('Tycoon purchase exposes both configured payment routes', () => {
   const game = new TycoonGame({ cash: 10000 });
   const result = game.buyBusiness('bakery', 2500);
   assert.equal(result.ok, true);
   assert.equal(result.payment.recipient, '0x0B4fF3fc6AE19fAF9A0d2628a646ABD9636B1162');
+  assert.equal(result.payment.paypalAccount, 'amer.hwaitat@gmail.com');
   assert.equal(game.cash, 7500);
 });
 
