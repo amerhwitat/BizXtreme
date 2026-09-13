@@ -61,7 +61,7 @@ class BizXtremeApp(tk.Tk):
             self.after(0, self.status.set, "Error")
             self.after(0, messagebox.showerror, "BizXtreme error", str(exc))
         finally:
-            self.after(0, self.start_btn.configure, {"state": "normal"})
+            self.after(0, lambda: self.start_btn.configure(state="normal"))
 
 
 def main() -> None:
