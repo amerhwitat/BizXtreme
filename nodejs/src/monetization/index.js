@@ -1,8 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import path from 'node:path';
 
-const CONFIG_PATH = fileURLToPath(new URL('../../../../games/payment-config/payment-config.json', import.meta.url));
+const CONFIG_PATH = fileURLToPath(new URL('../../../games/payment-config/payment-config.json', import.meta.url));
 const PAYMENT_CONFIG = JSON.parse(readFileSync(CONFIG_PATH, 'utf8'));
 export const PAYMENT_ROUTING = Object.freeze(PAYMENT_CONFIG.paymentRouting);
 
