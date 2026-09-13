@@ -1,0 +1,23 @@
+name: Validate health ammo gameplay
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gameplay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Node.js resource system
+        run: node nodejs/src/game/survival/index.test.js
+      - name: Validate Python resource system
+        run: python -m pytest -q python/bizxtreme/game/survival/test_resources.py
+      - name: Validate Java resource system
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/bizxtreme-resource-test
+          javac -d /tmp/bizxtreme-resource-test java/src/main/java/io/amerhwitat/bizxtreme/game/PlayerResources.java
