@@ -11,6 +11,7 @@ if str(ENGINE) not in sys.path:
 from unified_engine import GameState
 
 COINS = {"BIZ": {"name": "BizX Coin", "symbol": "BIZ", "virtual": True}}
+ASSET_BROWSER = "http://127.0.0.1:8790"
 
 
 def run(mode: str, cash: float):
@@ -22,10 +23,17 @@ def run(mode: str, cash: float):
     snapshot["economy"]["coin_metadata"] = COINS
     snapshot["rendering"] = {"requested": "auto", "available": ["terminal"]}
     snapshot["networking"] = {"mode": "offline", "status": "ready"}
+    snapshot["asset_browser"] = {
+        "enabled": True,
+        "url": ASSET_BROWSER,
+        "providers": ["Openverse", "Poly Haven", "Kenney"],
+        "import_directory": "game_assets/",
+        "provenance_manifest": "game_assets/manifest.json",
+    }
     snapshot["status"] = "started"
     print(json.dumps(snapshot, indent=2))
     if mode == "tycoon":
-        print("Tycoon session ready. Shared economy state is active; use runtime adapters for interactive rendering.")
+        print("Tycoon session ready. Use the in-game Asset Browser at http://127.0.0.1:8790 to browse and import licensed assets.")
     return snapshot
 
 
