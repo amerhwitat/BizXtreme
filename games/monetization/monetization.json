@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "mode": "adapter-ready",
+  "currency": "USD",
+  "products": {
+    "starter_pack": {"type": "consumable", "price": 0.99},
+    "builder_pack": {"type": "consumable", "price": 4.99},
+    "tycoon_premium": {"type": "non_consumable", "price": 9.99},
+    "vip_monthly": {"type": "subscription", "price": 4.99, "period": "month"}
+  },
+  "adPlacements": ["banner_home", "interstitial_round_end", "rewarded_double_income", "rewarded_bonus_cash"],
+  "platforms": {
+    "unityAds": {"enabled": true, "dashboard": "https://dashboard.unity3d.com/"},
+    "unityLevelPlay": {"enabled": true, "dashboard": "https://dashboard.unity.com/"},
+    "appLovinMAX": {"enabled": true, "dashboard": "https://dash.applovin.com/"},
+    "googleAdMob": {"enabled": true, "dashboard": "https://admob.google.com/"},
+    "googlePlayBilling": {"enabled": true, "dashboard": "https://play.google.com/console/"},
+    "appleStoreKit": {"enabled": true, "dashboard": "https://appstoreconnect.apple.com/"},
+    "revenueCat": {"enabled": true, "dashboard": "https://app.revenuecat.com/"}
+  },
+  "productionCredentialsInRepository": false,
+  "serverSidePurchaseVerification": true,
+  "testMode": true
+}
