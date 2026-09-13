@@ -8,11 +8,15 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 
 ## NetworkUnified — user-facing networking/API application
 
-`NetworkUnified/` now consolidates networking/API functionality behind the versioned `bizxtreme.network.api.v1` contract. Runnable implementations are provided for Python, Node.js, TypeScript, Go, Rust, Java, C#, C++, Dart, Kotlin, Swift, PHP and Ruby. Python and Node.js provide local HTTP API servers bound to `127.0.0.1:8787`; the other language implementations expose the same catalog and native networking diagnostics.
+`NetworkUnified/` consolidates networking/API functionality behind the versioned `bizxtreme.network.api.v1` contract. Runnable implementations are provided for Python, Node.js, TypeScript, Go, Rust, Java, C#, C++, Dart, Kotlin, Swift, PHP and Ruby.
 
-Run `run-network-api.bat`, `run-network-api.ps1`, or `run-network-api.sh` from the repository root. Choose the implementation through `NETWORK_API_IMPL`. The browser console is `NetworkUnified/gui/index.html`; the contract is `NetworkUnified/contract/api.json`.
+## AssetBrowser — in-game open/free asset library
 
-Public active targets are allowlist-only. The network layer does not implement Internet-wide enumeration, credential attacks, evasion, spoofing, or exploitation.
+`AssetBrowser/` provides the game-facing GUI for searching openly licensed images/audio and curated CC0 game/3D assets, inspecting license/provenance information, downloading selected assets, verifying SHA-256, and importing them into `game_assets/`. Providers are Openverse, Poly Haven and the official Kenney catalog. Downloads are restricted to configured HTTPS provider hosts and are never executed. Every imported asset is recorded in `game_assets/manifest.json`.
+
+Run `AssetBrowser/scripts/run.bat`, `AssetBrowser/scripts/run.ps1`, or `AssetBrowser/scripts/run.sh`; the default local GUI/API address is `http://127.0.0.1:8790`.
+
+Public active network targets remain allowlist-only. The network layer does not implement Internet-wide enumeration, credential attacks, evasion, spoofing, or exploitation.
 
 ## Unified build and configuration automation
 
@@ -32,6 +36,7 @@ BizXtreme carries the cross-language Tycoon business engine: business acquisitio
 |---|---|
 | Unified application | [UnifiedGame/](UnifiedGame/) |
 | Network API | [NetworkUnified/](NetworkUnified/) |
+| Asset Browser | [AssetBrowser/](AssetBrowser/) |
 | Visual C++ Windows | [desktop/vcpp/](desktop/vcpp/) |
 | C# / WPF | [desktop/dotnet/](desktop/dotnet/) |
 | Unity 3D | [Unity3D/](Unity3D/) |
