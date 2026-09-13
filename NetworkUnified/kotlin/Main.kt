@@ -1,0 +1,2 @@
+import java.net.*
+fun main(){val p=System.getenv("NETWORK_API_PORT")?.toIntOrNull()?:8787;println("{\"schema\":\"bizxtreme.network.api.v1\",\"implementation\":\"kotlin\",\"port\":$p}");println("scope 127.0.0.1 = local/intranet");try{Socket().use{it.connect(InetSocketAddress("127.0.0.1",p),1000);println("local API port reachable")}}catch(_:Exception){println("local API port not reachable (normal if server not running)")}}
