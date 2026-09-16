@@ -2,6 +2,14 @@
 
 BizXtreme is the extended BizX application/game repository, including WebGL/Three.js, Unity/C#, wallet, crypto, game, Aurora, Chimera integration, Kotlin mobile and Flutter mobile material.
 
+## Web search tags
+
+**Core tags:** `bizxtreme`, `game-platform`, `game-engine`, `unified-game`, `business-simulation`, `tycoon-game`, `rpg`, `strategy-game`, `webgl`, `threejs`, `unity`, `csharp`, `networking`, `p2p`, `multiplayer`, `crypto`, `crypto-wallet`, `blockchain`, `asset-browser`, `python`, `nodejs`, `java`, `rust`, `go`, `cpp`, `typescript`, `kotlin`, `flutter`, `mobile-game`, `cross-platform`, `ai`, `rendering`
+
+**Search phrases:** BizXtreme game platform, unified cross-platform game application, business simulation game engine, tycoon game platform, WebGL Three.js game engine, Unity C# game systems, multiplayer P2P networking, cross-language game development, cryptocurrency wallet integration, open licensed game asset browser, mobile game Kotlin Flutter, real-time game rendering, AI game systems, cross-platform game networking.
+
+See [`WEB_SEARCH_TAGS.md`](WEB_SEARCH_TAGS.md) for the maintained tag set and search-phrase metadata.
+
 ## Unified Game Application
 
 `UnifiedGame/` provides a single runnable application facade that combines the game, economy, virtual crypto-asset simulation, rendering capability adapters and networking/session concepts while preserving existing native implementations.
