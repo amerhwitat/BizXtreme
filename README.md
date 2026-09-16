@@ -8,7 +8,7 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 
 **Search phrases:** BizXtreme game platform, unified cross-platform game application, business simulation game engine, tycoon game platform, WebGL Three.js game engine, Unity C# game systems, multiplayer P2P networking, cross-language game development, cryptocurrency wallet integration, open licensed game asset browser, mobile game Kotlin Flutter, real-time game rendering, AI game systems, cross-platform game networking.
 
-See [`WEB_SEARCH_TAGS.md`](WEB_SEARCH_TAGS.md) for the maintained tag set and search-phrase metadata.
+See `WEB_SEARCH_TAGS.md` for the maintained tag set and search-phrase metadata.
 
 ## Unified Game Application
 
