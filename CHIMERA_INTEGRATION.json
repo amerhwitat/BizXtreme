@@ -1,0 +1,10 @@
+{
+  "$schema":"CHM-APP-INTEGRATION-1",
+  "application":"BizXtreme",
+  "target":"Chimera II OS",
+  "aurora_app_id":"bizxtreme",
+  "integration_points":["Aurora Wayland Glass","Koronos IPC","Chimera Network Center","Universal Execution API","Retro Center","Chimera Package Manager","shared settings/preferences"],
+  "capabilities":["unified game platform","game engine","business simulation","tycoon","RPG","strategy","WebGL/Three.js","Unity/C# systems","P2P","multiplayer","crypto/crypto-wallet","asset browser","AI","rendering","mobile targets","game economy"],
+  "language_adapters":["C","C++","C#","Python","Java","JavaScript","TypeScript","Kotlin","Swift","Go","Rust","Dart","PHP","Ruby","Flutter"],
+  "policy":"Reuse existing source through language-specific adapters and shared APIs; preserve each component's license and provenance."
+}
