@@ -14,7 +14,6 @@ permissions:
 
 jobs:
   build:
-    if: github.event_name == 'pull_request' || (github.event_name != 'pull_request' && secrets.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_TOKEN != '')
     runs-on: ubuntu-latest
     steps:
       - name: Check out
@@ -25,6 +24,15 @@ jobs:
 
       - name: Validate Compose
         run: docker compose config
+
+      - name: Require Docker Hub credentials
+        if: github.event_name != 'pull_request'
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          test -n "$DOCKERHUB_USERNAME" || { echo "Missing DOCKERHUB_USERNAME repository secret"; exit 1; }
+          test -n "$DOCKERHUB_TOKEN" || { echo "Missing DOCKERHUB_TOKEN repository secret"; exit 1; }
 
       - name: Log in to Docker Hub
         if: github.event_name != 'pull_request'
@@ -37,7 +45,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
+          images: ${{ secrets.DOCKERHUB_USERNAME || 'local' }}/${{ github.event.repository.name }}
           tags: |
             type=raw,value=latest,enable=${{ github.event_name != 'pull_request' && github.ref_name == github.event.repository.default_branch }}
             type=sha
