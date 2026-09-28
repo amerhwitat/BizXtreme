@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "project": "BizX/NLP Retro Emulator Stack",
+  "policy": {
+    "source": "Build upstream open-source emulators from pinned revisions; do not vendor or relicense upstream source.",
+    "roms": "No proprietary ROM or Kickstart images are redistributed.",
+    "certification": "A media artifact becomes certified only after its target emulator smoke test succeeds."
+  },
+  "targets": {
+    "C64": {"emulator":"VICE","license":"GPL-2.0-or-later"},
+    "C128": {"emulator":"VICE","license":"GPL-2.0-or-later"},
+    "VIC20": {"emulator":"VICE","license":"GPL-2.0-or-later"},
+    "Plus4": {"emulator":"VICE","license":"GPL-2.0-or-later"},
+    "PET": {"emulator":"VICE","license":"GPL-2.0-or-later"},
+    "Atari800": {"emulator":"Atari800","license":"GPL-2.0-or-later"},
+    "AppleII": {"emulator":"AppleWin","license":"GPL-2.0-or-later"},
+    "ZXSpectrum": {"emulator":"Fuse/libspectrum","license":"GPL-2.0-or-later"},
+    "AmstradCPC": {"emulator":"Caprice32","license":"GPL-2.0-or-later"},
+    "MSX": {"emulator":"openMSX","license":"GPL-2.0-or-later"},
+    "BBCMicro": {"emulator":"B-em","license":"GPL-2.0-or-later"},
+    "TRS80": {"emulator":"MAME","license":"BSD-3-Clause"},
+    "Amiga500": {"emulator":"FS-UAE","license":"GPL-2.0-or-later"},
+    "AtariST": {"emulator":"Hatari","license":"GPL-2.0-or-later"}
+  }
+}
