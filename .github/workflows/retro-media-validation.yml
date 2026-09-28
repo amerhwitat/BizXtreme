@@ -23,7 +23,8 @@ jobs:
           test -s retro/dist/retro-media.zip
           test -s retro/media/retro-media-manifest.json
           test -s retro/media/SHA256SUMS.txt
-          sha256sum -c retro/media/SHA256SUMS.txt
+          cd retro/media
+          sha256sum -c SHA256SUMS.txt
       - name: Upload validation report
         uses: actions/upload-artifact@v4
         with:
