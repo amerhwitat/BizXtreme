@@ -15,10 +15,18 @@ jobs:
       - uses: actions/checkout@v6
       - name: Build retro media
         run: python3 retro/tools/build-retro-media.py
-      - name: Verify generated files
+      - name: Validate media structure
+        run: python3 retro/tools/validate-retro-media.py
+      - name: Verify generated checksums
         shell: bash
         run: |
           test -s retro/dist/retro-media.zip
           test -s retro/media/retro-media-manifest.json
           test -s retro/media/SHA256SUMS.txt
           sha256sum -c retro/media/SHA256SUMS.txt
+      - name: Upload validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: retro-structural-validation-${{ matrix.target }}
+          path: retro/media/structural-validation.json
+          retention-days: 30
