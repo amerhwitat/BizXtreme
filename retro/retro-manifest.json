@@ -23,7 +23,9 @@
       "AmstradCPC"
     ],
     "msx": [
-      "MSX"
+      "MSX",
+      "SakhrAX170",
+      "SakhrAX230"
     ],
     "bbc": [
       "BBCMicro"
@@ -77,6 +79,12 @@
     ],
     "AtariST": [
       "ST"
+    ],
+    "SakhrAX170": [
+      "ROM"
+    ],
+    "SakhrAX230": [
+      "ROM"
     ]
   },
   "verification": {
