@@ -1,0 +1,89 @@
+{
+  "schema_version": "3.0",
+  "project": "BizX Retro Editions",
+  "policy": "native-media-only",
+  "targets": {
+    "commodore": [
+      "C64",
+      "C128",
+      "VIC-20",
+      "Plus/4",
+      "PET"
+    ],
+    "atari8": [
+      "Atari800"
+    ],
+    "apple2": [
+      "AppleII"
+    ],
+    "zxspectrum": [
+      "ZXSpectrum"
+    ],
+    "amstradcpc": [
+      "AmstradCPC"
+    ],
+    "msx": [
+      "MSX"
+    ],
+    "bbc": [
+      "BBCMicro"
+    ],
+    "trs80": [
+      "TRS80"
+    ],
+    "amiga": [
+      "Amiga500"
+    ],
+    "atarist": [
+      "AtariST"
+    ]
+  },
+  "formats": {
+    "C64": [
+      "D64",
+      "PRG",
+      "T64",
+      "TAP"
+    ],
+    "C128": [
+      "D71"
+    ],
+    "C1581": [
+      "D81"
+    ],
+    "Atari800": [
+      "ATR"
+    ],
+    "AppleII": [
+      "2MG"
+    ],
+    "ZXSpectrum": [
+      "DSK"
+    ],
+    "AmstradCPC": [
+      "DSK"
+    ],
+    "MSX": [
+      "DSK"
+    ],
+    "BBCMicro": [
+      "SSD"
+    ],
+    "TRS80": [
+      "DSK"
+    ],
+    "Amiga500": [
+      "ADF"
+    ],
+    "AtariST": [
+      "ST"
+    ]
+  },
+  "verification": {
+    "structural": "generated-and-hashed",
+    "emulator_execution": "pending per target",
+    "flawless_runtime_claim": false
+  },
+  "rom_policy": "No proprietary ROM images are redistributed.",
+  "release_policy": "Only emulator-tested target-native binaries/images should be promoted to certified releases."
+}
