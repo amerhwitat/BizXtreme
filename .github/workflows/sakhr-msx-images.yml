@@ -1,0 +1,27 @@
+name: Sakhr MSX AX-170 AX-230 images
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [BizX,BizXtreme,nlp]
+        model: [AX-170,AX-230]
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build cartridge images
+        run: python3 retro/tools/build-sakhr-msx-images.py
+      - name: Verify requested image
+        run: test -s "retro/dist/sakhr-msx/\${{ matrix.project }}-Sakhr-\${{ matrix.model }}.rom"
+      - name: Upload image
+        uses: actions/upload-artifact@v4
+        with:
+          name: sakhr-msx-\${{ matrix.project }}-\${{ matrix.model }}
+          path: retro/dist/sakhr-msx/
+          retention-days: 30
