@@ -1,0 +1,28 @@
+name: Retro media build and release
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build deterministic retro media
+        run: python3 retro/tools/build-retro-media.py
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: retro-media
+          path: retro/dist/retro-media.zip
+          retention-days: 30
+      - name: Publish tagged release asset
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1 || gh release create "${GITHUB_REF_NAME}" --generate-notes
+          gh release upload "${GITHUB_REF_NAME}" retro/dist/retro-media.zip --clobber
