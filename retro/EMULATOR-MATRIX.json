@@ -1,14 +1,14 @@
 {
   "project":"BizX/NLP Retro Emulator Matrix",
   "status":"source-and-build-orchestration",
-  "targets":["C64","C128","VIC20","Plus4","PET","Atari800","AppleII","ZXSpectrum","AmstradCPC","MSX","BBCMicro","TRS80","Amiga500","AtariST"],
+  "targets":["C64","C128","VIC20","Plus4","PET","Atari800","AppleII","ZXSpectrum","AmstradCPC","MSX","SakhrAX170","SakhrAX230","BBCMicro","TRS80","Amiga500","AtariST"],
   "emulators":{
     "commodore":"VICE",
     "atari8":"Atari800",
     "apple2":"AppleWin",
     "zxspectrum":"Fuse/libspectrum",
     "amstradcpc":"Caprice32",
-    "msx":"openMSX",
+    "msx":"openMSX","sakhr_ax170":["MAME","openMSX"],"sakhr_ax230":["MAME","openMSX"],
     "bbc":"B-em",
     "amiga":"FS-UAE",
     "atarist":"Hatari"
