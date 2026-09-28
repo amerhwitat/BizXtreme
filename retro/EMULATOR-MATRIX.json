@@ -1,0 +1,19 @@
+{
+  "project":"BizX/NLP Retro Emulator Matrix",
+  "status":"source-and-build-orchestration",
+  "targets":["C64","C128","VIC20","Plus4","PET","Atari800","AppleII","ZXSpectrum","AmstradCPC","MSX","BBCMicro","TRS80","Amiga500","AtariST"],
+  "emulators":{
+    "commodore":"VICE",
+    "atari8":"Atari800",
+    "apple2":"AppleWin",
+    "zxspectrum":"Fuse/libspectrum",
+    "amstradcpc":"Caprice32",
+    "msx":"openMSX",
+    "bbc":"B-em",
+    "amiga":"FS-UAE",
+    "atarist":"Hatari"
+  },
+  "source_policy":"Build from upstream open-source repositories at pinned tags/commits; preserve upstream licenses and notices; do not redistribute proprietary ROMs.",
+  "runtime_policy":"Host-network access is opt-in and mediated by an emulator networking adapter. Guest software never receives unrestricted host filesystem access.",
+  "llm_policy":"RNN/LLM integration is an external service/module boundary; it does not alter emulated CPU semantics."
+}
