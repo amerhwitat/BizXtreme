@@ -1,0 +1,24 @@
+name: Retro media validation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  structural:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [C64,C128,VIC20,Plus4,PET,Atari800,AppleII,ZXSpectrum,AmstradCPC,MSX,BBCMicro,TRS80,Amiga500,AtariST]
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build retro media
+        run: python3 retro/tools/build-retro-media.py
+      - name: Verify generated files
+        shell: bash
+        run: |
+          test -s retro/dist/retro-media.zip
+          test -s retro/media/retro-media-manifest.json
+          test -s retro/media/SHA256SUMS.txt
+          sha256sum -c retro/media/SHA256SUMS.txt
