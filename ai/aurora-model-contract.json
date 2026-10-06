@@ -1,0 +1,1 @@
+{"schema":"chimera-ai-model/v1","providers":["browser-rnn","transformers-js","authorized-chimera-backend"],"learning_event_schema":"chimera-user-learning/v1","emulator_boundary":"guest cannot execute host model code","advisory_only":true}
