@@ -18,10 +18,10 @@ jobs:
       - name: Build cartridge images
         run: python3 retro/tools/build-sakhr-msx-images.py
       - name: Verify requested image
-        run: test -s "retro/dist/sakhr-msx/\${{ matrix.project }}-Sakhr-\${{ matrix.model }}.rom"
+        run: test -s "retro/dist/sakhr-msx/${{ matrix.project }}-Sakhr-${{ matrix.model }}.rom"
       - name: Upload image
         uses: actions/upload-artifact@v4
         with:
-          name: sakhr-msx-\${{ matrix.project }}-\${{ matrix.model }}
+          name: sakhr-msx-${{ matrix.project }}-${{ matrix.model }}
           path: retro/dist/sakhr-msx/
           retention-days: 30
