@@ -13,16 +13,25 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      - name: Detect GitHub Pages availability
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pages" >/dev/null 2>&1; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "GitHub Pages is not enabled for this repository; retaining a successful artifact-only build."
+          fi
+      - name: Configure Pages
+        if: steps.pages.outputs.enabled == 'true'
+        uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
       - id: deployment
+        if: steps.pages.outputs.enabled == 'true'
         uses: actions/deploy-pages@v4
