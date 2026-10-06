@@ -22,7 +22,7 @@ jobs:
         run: |
           test -s retro/dist/retro-media.zip
           test -s retro/media/retro-media-manifest.json
-          test -s retro/media/SHA256SUMS.txt
+          test -f retro/media/SHA256SUMS.txt
           cd retro/media
           if [ -s SHA256SUMS.txt ]; then
             sha256sum -c SHA256SUMS.txt
