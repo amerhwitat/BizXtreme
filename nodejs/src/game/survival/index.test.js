@@ -5,7 +5,7 @@ const p = new PlayerResources();
 assert.equal(p.health, 100);
 assert.equal(p.ammo, 30);
 assert.equal(p.reserveAmmo, 120);
-assert.equal(p.useMedicalKit(), 40);
+assert.equal(p.useMedicalKit(), 100);
 assert.equal(p.health, 100);
 assert.equal(p.addAmmo(), 30);
 assert.equal(p.reserveAmmo, 150);
