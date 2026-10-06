@@ -10,6 +10,14 @@ BizXtreme is the extended BizX application/game repository, including WebGL/Thre
 
 See `WEB_SEARCH_TAGS.md` for the maintained tag set and search-phrase metadata.
 
+## Aurora Web Wallet & Ecosystem Surface
+
+The public Aurora portal exposes the repository's wallet, WebGL/mobile wallet contract, game economy, NetworkUnified/P2P, AI and safe crypto-research capabilities through a provider-neutral browser UI. It does not collect private keys or seed phrases.
+
+- Portal: https://amerhwitat.github.io/apps/chimera-ii-os/web/wallet-center.html
+- Wallet guide: `docs/WALLET_MOBILE_WEBGL.md`
+- Crypto adapter boundary: `crypto/README.md`
+
 ## Unified Game Application
 
 `UnifiedGame/` provides a single runnable application facade that combines the game, economy, virtual crypto-asset simulation, rendering capability adapters and networking/session concepts while preserving existing native implementations.
