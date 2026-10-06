@@ -65,3 +65,10 @@ BizXtreme carries the cross-language Tycoon business engine: business acquisitio
 | Java | [java/](java/) |
 | Python | [python/](python/) |
 | JavaScript / TypeScript | [javascript/](javascript/) / [typescript/](typescript/) |
+
+
+## Aurora Complete Game Center
+
+The maintained browser portal exposes the BizX/BizXtreme game catalog, card-game flows, T-Rex runner, storylines, seasonal events, progression, local save/export state, touch/keyboard controls, retro target catalog, and emulator handoffs through the Aurora Complete Game Center:
+
+https://amerhwitat.github.io/apps/chimera-ii-os/web/game-center.html
