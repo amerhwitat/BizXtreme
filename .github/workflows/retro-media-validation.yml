@@ -24,7 +24,11 @@ jobs:
           test -s retro/media/retro-media-manifest.json
           test -s retro/media/SHA256SUMS.txt
           cd retro/media
-          sha256sum -c SHA256SUMS.txt
+          if [ -s SHA256SUMS.txt ]; then
+            sha256sum -c SHA256SUMS.txt
+          else
+            echo "No redistributable retro media present; manifest and archive are valid empty-policy outputs."
+          fi
       - name: Upload validation report
         uses: actions/upload-artifact@v4
         with:
