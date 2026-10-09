@@ -4,20 +4,18 @@ Java 17+ implementation of BizXtreme services and integration boundaries.
 
 ## Single-point game entry
 
-`io.amerhwitat.bizxtreme.GameLauncher` is the canonical Java entry point for starting the BizXtreme game/application runtime. It creates the public `BizXtremeApi` boundary and keeps the launcher independent of Unity/C#, Node.js, Python, and browser source.
+`io.amerhwitat.bizxtreme.GameLauncher` is the canonical Java entry point for starting the BizXtreme game/application runtime. It creates the public `BizXtremeApi` boundary and keeps the launcher independent of Unity/C#, Node.js, Python, and browser source. The no-argument API constructor uses the default `BizXtremeCore` identity (`BizXtreme`, version `1.0.0`).
 
 Build and launch:
 
 ```bash
-mvn package
+mvn --batch-mode --no-transfer-progress clean verify
 java -cp target/classes io.amerhwitat.bizxtreme.GameLauncher
 ```
 
 ## Build and test
 
-```bash
-mvn test
-```
+The shared, language-neutral health-contract vectors live in `../contracts/fixtures/bizxtreme-runtime-v1.tsv`. Java tests validate both default and custom core metadata against these vectors. CI runs the same Maven verification.
 
 ## Layout
 
