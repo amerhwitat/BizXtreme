@@ -1,0 +1,4 @@
+# Shared BizXtreme runtime v1 vectors: case<TAB>name<TAB>version<TAB>expected key/value contract
+core-health	BizXtreme	1.0.0	name=BizXtreme;version=1.0.0;status=ok;runtime=java
+core-health	Example	2.1.0	name=Example;version=2.1.0;status=ok;runtime=java
+api-default	~	~	name=BizXtreme;version=1.0.0;status=ok;runtime=java
