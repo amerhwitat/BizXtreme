@@ -1,0 +1,35 @@
+name: BizXtreme Java Runtime Contracts
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "java/**"
+      - "contracts/fixtures/**"
+      - ".github/workflows/java-runtime-contracts.yml"
+  pull_request:
+    paths:
+      - "java/**"
+      - "contracts/fixtures/**"
+      - ".github/workflows/java-runtime-contracts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  java-runtime-contracts:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: java
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+          cache-dependency-path: java/pom.xml
+      - name: Verify Java runtime and shared contract fixtures
+        run: mvn --batch-mode --no-transfer-progress clean verify
