@@ -54,7 +54,7 @@ jobs:
           - name: go
             setup: |
               true
-            command: go build ./UnifiedGame/launcher/go
+            command: cd UnifiedGame/launcher/go && go build .
           - name: cpp
             setup: |
               true
