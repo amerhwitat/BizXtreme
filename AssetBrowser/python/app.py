@@ -2,7 +2,7 @@
 import hashlib,http.server,json,mimetypes,os,pathlib,socket,urllib.parse,urllib.request
 from urllib.parse import urlparse
 ROOT=pathlib.Path(__file__).resolve().parents[1]; WEB=ROOT/'web'; PROVIDERS=json.loads((ROOT/'config/providers.json').read_text())
-PORT=int(os.getenv('ASSET_BROWSER_PORT','8790')); STORE=pathlib.Path(os.getenv('ASSET_BROWSER_DIR',str(ROOT/'game_assets'))); STORE.mkdir(parents=True,exist_ok=True); MANIFEST=STORE/'manifest.json'; UA='BizXtreme-AssetBrowser/1.0 (+in-game asset browser)'
+ALLOWED_ORIGINS={x.strip() for x in os.getenv('ASSET_BROWSER_CORS_ORIGINS','http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173').split(',') if x.strip()}; PORT=int(os.getenv('ASSET_BROWSER_PORT','8790')); STORE=pathlib.Path(os.getenv('ASSET_BROWSER_DIR',str(ROOT/'game_assets'))); STORE.mkdir(parents=True,exist_ok=True); MANIFEST=STORE/'manifest.json'; UA='BizXtreme-AssetBrowser/1.0 (+in-game asset browser)'
 SAFE_EXT={'.png','.jpg','.jpeg','.webp','.gif','.wav','.ogg','.mp3','.flac','.glb','.gltf','.obj','.mtl','.hdr','.exr','.ttf','.otf','.json','.txt','.zip'}
 def get(u):
  r=urllib.request.Request(u,headers={'User-Agent':UA})
@@ -33,8 +33,15 @@ def search(p,q,k):
  return []
 class H(http.server.BaseHTTPRequestHandler):
  def j(self,o,c=200):
-  b=json.dumps(o).encode();self.send_response(c);self.send_header('Content-Type','application/json');self.send_header('Access-Control-Allow-Origin','*');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
- def do_OPTIONS(self):self.send_response(204);self.send_header('Access-Control-Allow-Origin','*');self.send_header('Access-Control-Allow-Methods','GET,POST,OPTIONS');self.send_header('Access-Control-Allow-Headers','Content-Type');self.end_headers()
+  b=json.dumps(o).encode();self.send_response(c);self.send_header('Content-Type','application/json');origin=self.headers.get('Origin')
+  if origin and origin in ALLOWED_ORIGINS:self.send_header('Access-Control-Allow-Origin',origin);self.send_header('Vary','Origin')
+  self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
+ def do_OPTIONS(self):
+  origin=self.headers.get('Origin')
+  if origin and origin not in ALLOWED_ORIGINS:self.send_response(403);self.end_headers();return
+  self.send_response(204)
+  if origin:self.send_header('Access-Control-Allow-Origin',origin);self.send_header('Vary','Origin')
+  self.send_header('Access-Control-Allow-Methods','GET,POST,OPTIONS');self.send_header('Access-Control-Allow-Headers','Content-Type');self.end_headers()
  def do_GET(self):
   p=urllib.parse.urlparse(self.path)
   if p.path in ('/','/index.html'):return self.file(WEB/'index.html','text/html')
