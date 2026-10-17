@@ -25,6 +25,7 @@ def search(p,q,k):
  if p=='polyhaven':
   d=json.loads(get(PROVIDERS[p]['assets'])); q=q.lower(); o=[]
   for i,x in d.items():
+   if k in {'hdri','texture','model'} and x.get('type') != {'hdri':0,'texture':1,'model':2}[k]: continue
    if not q or q in (i+' '+str(x)).lower():
     files=json.loads(get(PROVIDERS[p]['files']+urllib.parse.quote(i,safe='')));u=first_url(files);o.append({'id':i,'title':x.get('name',i),'provider':'Poly Haven','type':{0:'hdri',1:'texture',2:'model'}.get(x.get('type'),'asset'),'license':'CC0','license_url':'https://polyhaven.com/license','source':'https://polyhaven.com/a/'+i,'preview':x.get('thumbnail_url'),'download':u})
    if len(o)>=24:break
