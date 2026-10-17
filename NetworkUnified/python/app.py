@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
 import http.server,json,os,socket,ipaddress
-PORT=int(os.getenv('NETWORK_API_PORT','8787')); ALLOW=set(filter(None,os.getenv('NETWORK_API_ALLOWLIST','').split(',')))
+PORT=int(os.getenv('NETWORK_API_PORT','8787')); ALLOW=set(filter(None,os.getenv('NETWORK_API_ALLOWLIST','').split(','))); CORS_ORIGINS=set(filter(None,os.getenv('NETWORK_API_CORS_ORIGINS','http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173').split(',')))
 CAT={'schema':'bizxtreme.network.api.v1','implementation':'python','endpoints':['GET /api/v1','GET /api/v1/health','GET /api/v1/config','POST /api/v1/classify','POST /api/v1/authorize','POST /api/v1/tcp-check','GET /api/v1/interfaces']}
 def classify(x):
  a=ipaddress.ip_address(x); return 'local/intranet' if a.is_private or a.is_loopback or a.is_link_local else 'public'
 def allowed(x): return classify(x)!='public' or x in ALLOW
 class H(http.server.BaseHTTPRequestHandler):
  def out(self,o,code=200):
-  b=json.dumps(o).encode();self.send_response(code);self.send_header('Content-Type','application/json');self.send_header('Access-Control-Allow-Origin','*');self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
- def do_OPTIONS(self): self.send_response(204);self.send_header('Access-Control-Allow-Origin','*');self.send_header('Access-Control-Allow-Methods','GET,POST,OPTIONS');self.send_header('Access-Control-Allow-Headers','Content-Type');self.end_headers()
+  b=json.dumps(o).encode();self.send_response(code);self.send_header('Content-Type','application/json');origin=self.headers.get('Origin')
+  if origin and origin in CORS_ORIGINS:self.send_header('Access-Control-Allow-Origin',origin);self.send_header('Vary','Origin')
+  self.send_header('Content-Length',str(len(b)));self.end_headers();self.wfile.write(b)
+ def do_OPTIONS(self):
+  origin=self.headers.get('Origin')
+  if origin and origin not in CORS_ORIGINS:self.send_response(403);self.end_headers();return
+  self.send_response(204)
+  if origin:self.send_header('Access-Control-Allow-Origin',origin);self.send_header('Vary','Origin')
+  self.send_header('Access-Control-Allow-Methods','GET,POST,OPTIONS');self.send_header('Access-Control-Allow-Headers','Content-Type');self.end_headers()
  def do_GET(self):
   if self.path=='/api/v1':return self.out(CAT)
   if self.path=='/api/v1/health':return self.out({'status':'ok','implementation':'python'})
