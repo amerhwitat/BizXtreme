@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -uo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"; MODE="${1:-all}"; LOG_DIR="$ROOT/build/logs"; mkdir -p "$LOG_DIR"; LOG="$LOG_DIR/build.log"; : > "$LOG"; FAILURES=0
-if [[ "$MODE" != "no-install" ]]; then "$ROOT/scripts/install-deps.sh" || FAILURES=$((FAILURES+1)); fi
+if [[ "$MODE" != "no-install" ]]; then bash "$ROOT/scripts/install-deps.sh" || FAILURES=$((FAILURES+1)); fi
 while IFS= read -r -d '' f; do d="$(dirname "$f")"; case "$(basename "$f")" in
 package.json) echo "== Node/TypeScript: $d =="; (cd "$d"; [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || npm install; npm run build --if-present; npm test --if-present) || FAILURES=$((FAILURES+1));;
 pyproject.toml|requirements.txt) echo "== Python: $d =="; (cd "$d"; [[ -f pyproject.toml ]] && python3 -m pip install -e .; [[ -f requirements.txt ]] && python3 -m pip install -r requirements.txt; python3 -m pytest) || FAILURES=$((FAILURES+1));;
